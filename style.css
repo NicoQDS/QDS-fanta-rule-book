@@ -278,8 +278,8 @@ html {
    value. We lighten just the background here and switch to dark text
    so it stays readable on top of it. */
 #palmares-table .text-bg-secondary {
-  background-color: #00000027 !important;
-  color: #212529 !important;
+  background-color: #eae8e8 !important;
+  color: var(--site-color-navbar) !important;
 }
 
 /* Non-zero "Serie A" / "Serie B" badges get their own custom colors
@@ -287,11 +287,11 @@ html {
    league. Navy for Serie A needs light text; the lighter green for
    Serie B reads better with dark text. */
 #palmares-table .badge-serie-a {
-  background-color: #2e5ddf;
-  color: #ffffff;
+  background-color: #2edfdc;
+  color: var(--site-color-navbar);
 }
 
 #palmares-table .badge-serie-b {
-  background-color: #82c730;
-  color: #212529;
+  background-color: #a6ff3a;
+  color: var(--site-color-navbar);
 }
