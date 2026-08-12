@@ -240,7 +240,7 @@ html {
    value. We lighten just the background here and switch to dark text
    so it stays readable on top of it. */
 #palmares-table .text-bg-secondary {
-  background-color: #adb5bde7 !important;
+  background-color: #00000027 !important;
   color: #212529 !important;
 }
 
