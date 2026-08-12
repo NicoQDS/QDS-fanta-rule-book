@@ -1,22 +1,6 @@
----
-title: Regolamento Fantacalcio QDS
-layout: default
----
-
 # Regolamento Fantacalcio
 
 **Rev05 — 02/09/2025**
-
-## Storico revisioni
-
-| Rev | Data | Descrizione |
-|-----|------|-------------|
-| Rev00 | 08/06/2023 | Prima emissione regolamento |
-| Rev01 | 04/07/2023 | Adozione Serie A e Serie B già dall'anno zero.<br>Eliminata suddivisione casuale dei gironi nell'anno zero.<br>Modificata quota iscrizione Serie A (50€→70€).<br>Modificati i premi assegnati al girone di Serie A (in toto) e Serie B (relativamente alla penale dell'ultimo posto). |
-| Rev02 | 07/10/2024 | Aggiunta la regola su rinvio giornate al regolamento.<br>Aggiornato albo risultati. |
-| Rev03 | 29/11/2024 | Aggiunta regola formazioni non schierate |
-| Rev04 | 31/07/2025 | Fantacalcio Mantra – Nuovo Regolamento e impostazioni |
-| Rev05 | 02/09/2025 | Cambiamenti a seguito delle votazioni in data 29/08:<br>Crediti Iniziali da 300 a 500;<br>Malus Rigore Sbagliato da -3 a -2;<br>Bonus Rigore Segnato da +3 a +2;<br>Introduzione Metodo Osnaghi per calcolo valore dei giocatori per l'asta di riparazione;<br>Soglie Gol da 4 invece che da 5. |
 
 ## 1. Formula a girone doppio
 
@@ -185,8 +169,8 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 1° | Charlie |
 | 2° | Mino, Giolla |
 | 3° | Pobbi, Tia |
-| 4° | Trilly |
-| 5° | Manu |
+| 4° | Manu |
+| 5° | Trilly |
 | 6° | Bruno |
 | 7° | Zecca |
 | 8° | Anto, Impe |
@@ -371,3 +355,14 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 1° | Nico, Gio |
 | 2° | Carlo, Cri |
 | 3° | Confa, Teo Colo |
+
+## Storico revisioni
+
+| Rev | Data | Descrizione |
+|-----|------|-------------|
+| Rev00 | 08/06/2023 | Prima emissione regolamento |
+| Rev01 | 04/07/2023 | Adozione Serie A e Serie B già dall'anno zero.<br>Eliminata suddivisione casuale dei gironi nell'anno zero.<br>Modificata quota iscrizione Serie A (50€→70€).<br>Modificati i premi assegnati al girone di Serie A (in toto) e Serie B (relativamente alla penale dell'ultimo posto). |
+| Rev02 | 07/10/2024 | Aggiunta la regola su rinvio giornate al regolamento.<br>Aggiornato albo risultati. |
+| Rev03 | 29/11/2024 | Aggiunta regola formazioni non schierate |
+| Rev04 | 31/07/2025 | Fantacalcio Mantra – Nuovo Regolamento e impostazioni |
+| Rev05 | 02/09/2025 | Cambiamenti a seguito delle votazioni in data 29/08:<br>Crediti Iniziali da 300 a 500;<br>Malus Rigore Sbagliato da -3 a -2;<br>Bonus Rigore Segnato da +3 a +2;<br>Introduzione Metodo Osnaghi per calcolo valore dei giocatori per l'asta di riparazione;<br>Soglie Gol da 4 invece che da 5. |

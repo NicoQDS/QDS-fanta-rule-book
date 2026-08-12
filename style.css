@@ -1,0 +1,232 @@
+/* =====================================================================
+   style.css
+   ---------------------------------------------------------------------
+   This file holds only CUSTOM tweaks that Bootstrap does not already
+   give us for free. Bootstrap (loaded via CDN in index.html) provides
+   almost all the visual styling (colors, spacing, buttons, tables,
+   navbar, cards...). We only add rules here for things that are
+   specific to THIS site.
+   ===================================================================== */
+
+/* -----------------------------------------------------------------
+   THEME COLORS — change the look of the whole site from right here
+   -------------------------------------------------------------------
+   These are the main colors used across the page. Each one is a
+   "CSS variable" (also called a "custom property"): a name that
+   holds a value, which every rule below reuses via "var(--name)"
+   instead of repeating the same color code everywhere.
+
+   To re-theme the site, you only need to edit the hex codes
+   ("#rrggbb") in THIS block — every place that color is used
+   (navbar, hero banner, footer, card headers, links) updates
+   automatically, because they all point back to these variables.
+   ------------------------------------------------------------------- */
+:root {
+  --site-color-navbar: #212529;      /* top navigation bar background */
+  --site-color-hero: #ffa012;        /* big page-title banner background */
+  --site-color-footer: #212529;      /* bottom footer background */
+  --site-color-card-header: #9E9E9E; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
+  --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
+  --site-color-navbar-links: #ffa012; /* text color of the links inside the navbar menu (#navbar-menu-links) */
+  --site-color-navbar-brand: #ffa012; /* text color of the site title link in the navbar (#navbar-brand-link) */
+}
+
+#main-navbar {
+  /* "!important" is required here because Bootstrap's own ".bg-primary"
+     utility class (which we used on the navbar in index.html) is
+     ALSO written with "!important", so a normal rule would lose to it. */
+  background-color: var(--site-color-navbar) !important;
+}
+
+#hero-title {
+  /* Same reasoning: overrides Bootstrap's ".bg-info-subtle" utility
+     class, which also uses "!important". */
+  background-color: var(--site-color-hero) !important;
+
+  /* The hero markup also has Bootstrap's ".py-5" utility class (3rem
+     top/bottom padding), and like the background utilities above,
+     ".py-5" is written with "!important" — so our override needs
+     "!important" too, otherwise it loses even though "#hero-title" is
+     more specific. Shared by all three pages since they all reuse the
+     same "#hero-title" id in their copy-pasted hero markup. */
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+#main-footer {
+  /* Same reasoning: overrides Bootstrap's ".bg-dark" utility class. */
+  background-color: var(--site-color-footer) !important;
+}
+
+.card-header {
+  /* Bootstrap's own card-header rule has no "!important", so a plain
+     override (no "!important" needed) is enough here. */
+  background-color: var(--site-color-card-header);
+}
+
+a {
+  /* Plain paragraph links (e.g. the "Regolamento formazioni non
+     schierate" link in the Coppa section). This does NOT affect the
+     white navbar links — those get their own color from Bootstrap's
+     "navbar-dark" class, by design, so they stay readable on the
+     blue navbar background above. */
+  color: var(--site-color-link);
+}
+
+#navbar-menu-links .nav-link {
+  /* Targets only the links inside the navbar menu (id="navbar-menu-links"
+     in index.html). Combining an id selector with a class selector
+     makes this more specific than Bootstrap's own ".nav-link" rule, so
+     it wins without needing "!important". */
+  color: var(--site-color-navbar-links);
+}
+
+#navbar-brand-link {
+  /* Targets the site title link by its own id, which is more specific
+     than Bootstrap's own ".navbar-brand" class rule, so it wins
+     without needing "!important". */
+  color: var(--site-color-navbar-brand);
+}
+
+/* -----------------------------------------------------------------
+   Font family, via Bootstrap's CSS variable
+   -------------------------------------------------------------------
+   Bootstrap 5.3 is built with CSS custom properties ("CSS variables").
+   The <body> element reads its font from the variable
+   "--bs-body-font-family", and because font-family is one of the CSS
+   properties that "inherits" automatically, every element on the page
+   (headings, card titles, buttons, table text...) picks up whatever
+   we put here too, unless it sets its own font explicitly (nothing on
+   this page does). So we only need to change this ONE variable
+   instead of writing a separate override for every component.
+   ------------------------------------------------------------------- */
+:root {
+  /* Montserrat first, then Bootstrap's own fallback fonts in case
+     Montserrat fails to load (e.g. no internet connection). We reuse
+     Bootstrap's "--bs-font-sans-serif" variable as the fallback list
+     so we don't have to retype it by hand. */
+  --bs-body-font-family: "Montserrat", var(--bs-font-sans-serif);
+}
+
+/* -----------------------------------------------------------------
+   Base font size
+   -------------------------------------------------------------------
+   Bootstrap sizes almost everything in "rem" units, which are always
+   relative to the root <html> element's font-size (normally 16px,
+   the browser default). Setting it here to 90% scales the WHOLE
+   page's text down proportionally — titles, tables, buttons, card
+   text, everything — without having to touch any Bootstrap variable.
+   ------------------------------------------------------------------- */
+html {
+  font-size: 80%;
+}
+
+/* -----------------------------------------------------------------
+   Narrow, single-column layout
+   -------------------------------------------------------------------
+   This site is mainly read on mobile phones, so we design for a
+   narrow single column instead of Bootstrap's normal wide desktop
+   layout. Bootstrap's ".container" class normally grows wider at
+   each larger screen breakpoint (540px, 720px, 960px, 1140px,
+   1320px...). We cap it at 600px at every breakpoint instead, so even
+   on a desktop browser the page reads like a narrow mobile column
+   instead of spreading edge to edge.
+
+   Unlike some other CSS frameworks, Bootstrap writes all of its
+   ".container" rules with the exact same "specificity" (a plain class
+   selector), so we don't need "!important" here: because this file is
+   loaded AFTER Bootstrap's stylesheet in index.html, our plain
+   ".container" rule below simply wins the tie at every screen width.
+   ------------------------------------------------------------------- */
+.container {
+  max-width: 800px;
+}
+
+/* -----------------------------------------------------------------
+   Sticky navbar offset
+   -------------------------------------------------------------------
+   Our navbar uses the Bootstrap class "fixed-top", which pins it to
+   the top of the screen and takes it out of the normal page flow.
+   Because it no longer "pushes" the content down, the page content
+   would otherwise start underneath it. This top padding on the whole
+   page reserves space equal to the navbar's height so the content
+   starts right below it instead of being hidden behind it.
+   ------------------------------------------------------------------- */
+body {
+  padding-top: 3.5rem; /* roughly the height of a Bootstrap navbar with our slightly smaller base font-size */
+}
+
+/* -----------------------------------------------------------------
+   Smooth scrolling for the anchor links
+   -------------------------------------------------------------------
+   Our navbar menu links point to in-page anchors like "#albo-risultati".
+   By default the browser jumps to them instantly. This rule tells the
+   browser to animate the scroll instead, which feels nicer to the user
+   and helps them understand they moved to a different part of the
+   SAME page (not a new page).
+   ------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* -----------------------------------------------------------------
+   Extra breathing room for anchor jumps
+   -------------------------------------------------------------------
+   Each rule section (girone doppio, mantra settings, etc.) has the
+   class "rulebook-section". When the browser jumps to one of these
+   via an anchor link, this makes sure the section title lands just
+   below the fixed navbar instead of being glued to its bottom edge.
+   ------------------------------------------------------------------- */
+.rulebook-section {
+  scroll-margin-top: 3.75rem;
+}
+
+/* -----------------------------------------------------------------
+   Settings screenshots
+   -------------------------------------------------------------------
+   The images that come from the Fantacalcio Mantra settings screen
+   are simple screenshots, not design assets. Bootstrap's own
+   "card-img-top" class already makes an image fill the width of its
+   card and round its top corners to match; we only add a thin border
+   here so the screenshot's own white background doesn't blend
+   invisibly into the card behind it.
+   ------------------------------------------------------------------- */
+.settings-screenshot {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+/* -----------------------------------------------------------------
+   Palmarès table — evenly spaced columns
+   -------------------------------------------------------------------
+   By default an HTML table sizes each column based on its content
+   (so "Girone unico" would be wider than "Serie A" just because the
+   header text is longer). "table-layout: fixed" makes the browser
+   ignore content width and instead split columns evenly based only
+   on the widths we give them below (25% each, since there are 4).
+   ------------------------------------------------------------------- */
+#palmares-table {
+  table-layout: fixed;
+}
+
+#palmares-table th,
+#palmares-table td {
+  width: 25%;
+}
+
+/* Center the three trophy-count columns (everything but "Nome"), so
+   the pill badges line up in the middle of their column instead of
+   hugging the left edge like plain text does by default. */
+#palmares-table th:not(:first-child),
+#palmares-table td:not(:first-child) {
+  text-align: center;
+}
+
+/* Bootstrap's ".badge" class ships with tight padding (0.35em/0.65em),
+   sized for badges sitting inline next to text. Ours sit alone inside
+   a table cell, so we bump the padding up a bit to give the pill more
+   breathing room. */
+#palmares-table .badge {
+  padding: 5px;
+  /* Bootstrap's ".badge" defaults to "font-weight: 700" (bold). */
+  font-weight: normal;
+}
