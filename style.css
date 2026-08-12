@@ -32,9 +32,9 @@
   /* Text styling for the little header strip at the top of cards
      (e.g. "Serie A", "Serie B", "Palmarès", each season). Edit these
      to change how that text looks everywhere at once. */
-  --site-card-header-text-color: #ffffff;   /* text color */
+  --site-card-header-text-color: #2a2f34;   /* text color */
   --site-card-header-font-size: 1.02rem;       /* text size */
-  --site-card-header-font-weight: 500;      /* text boldness (400 = normal, 700 = bold) */
+  --site-card-header-font-weight: 600;      /* text boldness (400 = normal, 700 = bold) */
 
   /* Colors for the "Lega unica" (non-zero) trophy-count badges in the
      Palmarès table. Edit these to change how those badges look. */
