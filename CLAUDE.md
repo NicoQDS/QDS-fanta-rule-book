@@ -10,10 +10,10 @@
   - The live website (Bootstrap-based, unique `id` attributes on
     elements) is split across three HTML pages sharing one navbar and
     footer (copy-pasted into each file — there is no templating):
-    - `index.html` — "Regolamento" (girone doppio, impostazioni
+    - `index.html` — "Albo risultati" (also the site's home page)
+    - `ruleset.htm` — "Regolamento" (girone doppio, impostazioni
       Mantra, rinvii partite, formazioni non schierate, Metodo
       Osnaghi)
-    - `albo-risultati.html` — "Albo risultati"
-    - `storico-revisioni.html` — "Storico revisioni"
+    - `revision.html` — "Storico revisioni"
   - When editing the navbar or footer, apply the same change to all
     three HTML files — they must stay identical.

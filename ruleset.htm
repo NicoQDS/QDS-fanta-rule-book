@@ -1,0 +1,435 @@
+<!doctype html>
+<!--
+  ruleset.htm — "Regolamento" page
+  =======================================================================
+  One of three pages that make up this site, all sharing the same
+  navbar and footer (see index.html's top comment for the full
+  explanation of the site's page structure). This page holds girone
+  doppio, impostazioni Mantra, rinvii partite, formazioni non
+  schierate, and Metodo Osnaghi.
+  =======================================================================
+-->
+<html lang="it">
+  <head>
+    <!-- Character encoding: tells the browser this file uses UTF-8, which
+       is required to correctly display accented Italian letters (à, è,
+       ì, ò, ù) and the euro symbol (€). -->
+    <meta charset="UTF-8" />
+
+    <!-- Makes the page resize correctly on phones/tablets instead of
+       always rendering at "desktop width" and shrinking everything. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Regolamento — Fantacalcio QDS</title>
+
+    <!-- Bootstrap CSS framework, loaded from the jsDelivr CDN. This single
+       <link> gives us all of Bootstrap's ready-made classes (navbar,
+       card, table, button, grid, etc.) without downloading/installing
+       anything ourselves. -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+
+    <!-- Montserrat font, loaded from Google Fonts. We pull in a few
+       weights (400 = regular, 500 = medium, 600 = semibold, 700 =
+       bold) because the page uses different weights for body text,
+       card headers/titles, and bold text ("strong" tags, table
+       headers, etc). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Our own custom CSS, loaded AFTER Bootstrap so it can override
+       Bootstrap's defaults where needed. Kept in its own file per the
+       project rule of "separate files for html, css, js", and shared
+       by all three pages. -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================================================================
+       NAVBAR
+       ---------------------------------------------------------------
+       Identical markup to index.html's navbar (see that file for the
+       full explanation of each piece). Copy-pasted here because this
+       is a plain static site with no shared-template mechanism.
+       =================================================================== -->
+    <nav id="main-navbar" class="navbar navbar-dark bg-primary fixed-top">
+      <div id="navbar-container" class="container-fluid">
+        <!-- The site title. Clicking it jumps back to the top of this page. -->
+        <a id="navbar-brand-link" class="navbar-brand fw-bold" href="index.html">Fantacalcio QDS</a>
+
+        <!-- This is the "hamburger" button (three lines) that only shows
+           up below the "lg" breakpoint. Bootstrap needs no custom
+           JavaScript from us for this to work: the "data-bs-toggle"
+           and "data-bs-target" attributes are read directly by
+           Bootstrap's own bundled JavaScript (loaded at the bottom of
+           this page), which opens/closes the menu with id
+           "navbar-menu" automatically. -->
+        <button
+          id="navbar-toggler-button"
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar-menu"
+          aria-controls="navbar-menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- The actual menu links. On wide screens they show inline; on
+           narrow screens they are hidden (class "collapse") until the
+           button above is clicked. -->
+        <div id="navbar-menu" class="collapse navbar-collapse">
+          <ul id="navbar-menu-links" class="navbar-nav ms-auto">
+            <li class="nav-item"><a id="nav-link-girone-doppio" class="nav-link" href="ruleset.htm#girone-doppio">Girone doppio</a></li>
+            <li class="nav-item"><a id="nav-link-mantra-settings" class="nav-link" href="ruleset.htm#mantra-settings">Impostazioni Mantra</a></li>
+            <li class="nav-item"><a id="nav-link-rinvii-partite" class="nav-link" href="ruleset.htm#rinvii-partite">Rinvii partite</a></li>
+            <li class="nav-item"><a id="nav-link-formazioni-non-schierate" class="nav-link" href="ruleset.htm#formazioni-non-schierate">Formazioni non schierate</a></li>
+            <li class="nav-item"><a id="nav-link-metodo-osnaghi" class="nav-link" href="ruleset.htm#metodo-osnaghi">Metodo Osnaghi</a></li>
+            <li class="nav-item"><a id="nav-link-albo-risultati" class="nav-link" href="index.html">Albo risultati</a></li>
+            <li class="nav-item"><a id="nav-link-revision-history" class="nav-link" href="revision.html">Storico revisioni</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================================================================
+       HERO / PAGE TITLE
+       ---------------------------------------------------------------
+       A simple colored banner for the page title. This is intentionally
+       NOT a card — cards are for individual content blocks further
+       down the page, while this banner is the page's own header. Each
+       of the three pages has its own hero with its own page name.
+       =================================================================== -->
+    <header id="hero-title" class="bg-info-subtle py-5 mb-4">
+      <div id="hero-title-body" class="container">
+        <h1 id="page-title" class="display-5 fw-bold mb-0">Regolamento</h1>
+      </div>
+    </header>
+
+    <!-- The "container" class centers the content and, thanks to our
+       override in style.css, keeps it narrow like a single mobile
+       column even on wide desktop screens. -->
+    <div id="page-container" class="container">
+      <!-- =================================================================
+         1. FORMULA A GIRONE DOPPIO
+         =============================================================== -->
+      <section id="girone-doppio" class="mb-5 rulebook-section">
+        <h2 class="mb-3">1. Formula a girone doppio</h2>
+        <p class="mb-4">
+          L'adozione di questo sistema prevede due gironi da otto squadre (Serie A e Serie B).
+        </p>
+
+        <!-- Suddivisione anno zero -->
+        <h3 id="suddivisione-anno-zero" class="h4 mb-3">Suddivisione anno zero</h3>
+        <p class="mb-3">
+          I due gironi di Serie A e Serie B dell'anno ZERO saranno così composti:
+        </p>
+
+        <!-- The two team-list cards sit side by side on the same row,
+           using Bootstrap's grid ("row" + "col-*"). "col-12" means
+           "take the full row width" on the very smallest screens
+           (so the two cards still stack if there really is no room),
+           and "col-sm-6" means "take half the row" from the "sm"
+           breakpoint (576px) upward, which is where these two narrow
+           tables comfortably fit side by side. The "card-header"
+           strip on each card labels which Serie it is about. -->
+        <div id="serie-a-serie-b-teams-row" class="row mb-4">
+          <div id="serie-a-teams-col" class="col-12 col-sm-6">
+            <div id="serie-a-teams-card" class="card">
+              <div class="card-header">Serie A</div>
+              <div class="card-body">
+                <div id="serie-a-teams-table-container" class="table-responsive">
+                  <table id="serie-a-teams-table" class="table table-bordered table-striped mb-0">
+                    <thead><tr><th>#</th><th>Squadra</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td>Anto &amp; Impe</td></tr>
+                      <tr><td>2</td><td>Pobbi &amp; Tia</td></tr>
+                      <tr><td>3</td><td>Tommy</td></tr>
+                      <tr><td>4</td><td>Charlie</td></tr>
+                      <tr><td>5</td><td>Ste Mora, Fefe &amp; Ale Lissi</td></tr>
+                      <tr><td>6</td><td>Mino &amp; Giolla</td></tr>
+                      <tr><td>7</td><td>Vinci</td></tr>
+                      <tr><td>8</td><td>Carlo</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="serie-b-teams-col" class="col-12 col-sm-6">
+            <div id="serie-b-teams-card" class="card">
+              <div class="card-header">Serie B</div>
+              <div class="card-body">
+                <div id="serie-b-teams-table-container" class="table-responsive">
+                  <table id="serie-b-teams-table" class="table table-bordered table-striped mb-0">
+                    <thead><tr><th>#</th><th>Squadra</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td>Nico</td></tr>
+                      <tr><td>2</td><td>Cri</td></tr>
+                      <tr><td>3</td><td>Gio</td></tr>
+                      <tr><td>4</td><td>Trilly</td></tr>
+                      <tr><td>5</td><td>Bruno</td></tr>
+                      <tr><td>6</td><td>Zecca</td></tr>
+                      <tr><td>7</td><td>Rouge</td></tr>
+                      <tr><td>8</td><td>Manu</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premi, promozione/retrocessione -->
+        <h3 id="premi-promozione-retrocessione" class="h4 mb-3">Premi, promozione/retrocessione</h3>
+        <p class="mb-3">
+          La quota di iscrizione è di 70 €/squadra per la Serie A e 50 €/squadra per la Serie B.
+        </p>
+
+        <div id="serie-a-prizes-card" class="card mb-3">
+          <div class="card-header">Serie A</div>
+          <div class="card-body">
+            <div id="serie-a-prizes-table-container" class="table-responsive">
+              <table id="serie-a-prizes-table" class="table table-bordered table-striped mb-0">
+                <thead><tr><th>Classifica</th><th>Premio</th></tr></thead>
+                <tbody>
+                  <tr><td>1° classificato</td><td>325€</td></tr>
+                  <tr><td>2° classificato</td><td>140€</td></tr>
+                  <tr><td>3° classificato</td><td>70€</td></tr>
+                  <tr><td>4° classificato</td><td>-</td></tr>
+                  <tr><td>5° classificato</td><td>-</td></tr>
+                  <tr><td>6° classificato</td><td>Retrocessione</td></tr>
+                  <tr><td>7° classificato</td><td>Retrocessione</td></tr>
+                  <tr><td>8° classificato</td><td>Retrocessione</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="serie-b-prizes-card" class="card mb-4">
+          <div class="card-header">Serie B</div>
+          <div class="card-body">
+            <div id="serie-b-prizes-table-container" class="table-responsive">
+              <table id="serie-b-prizes-table" class="table table-bordered table-striped mb-0">
+                <thead><tr><th>Classifica</th><th>Premio</th></tr></thead>
+                <tbody>
+                  <tr><td>1° classificato</td><td>225 € + 20 € / Prom.</td></tr>
+                  <tr><td>2° classificato</td><td>100 € / Prom.</td></tr>
+                  <tr><td>3° classificato</td><td>50 € / Prom.</td></tr>
+                  <tr><td>4° classificato</td><td>-</td></tr>
+                  <tr><td>5° classificato</td><td>-</td></tr>
+                  <tr><td>6° classificato</td><td>-</td></tr>
+                  <tr><td>7° classificato</td><td>-</td></tr>
+                  <tr><td>8° classificato</td><td>-20€</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coppa -->
+        <h3 id="coppa" class="h4 mb-3">Coppa</h3>
+        <div id="coppa-info-card" class="card">
+          <div id="coppa-info" class="card-body">
+            <p>
+              Il vincitore della coppa prende 50€ + eventuali multe (vedi
+              <a href="#formazioni-non-schierate">Regolamento formazioni non schierate</a>).
+            </p>
+            <p>La calendarizzazione della coppa verrà effettuata in fase di creazione dei gironi.</p>
+            <p class="mb-0">La coppa prevede partite tra tutte le squadre indipendentemente dall'appartenenza alla Serie A o Serie B.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+         2. REGOLAMENTO FANTACALCIO MANTRA
+         =============================================================== -->
+      <section id="mantra-settings" class="mb-5 rulebook-section">
+        <h2 class="mb-3">2. Regolamento Fantacalcio Mantra</h2>
+
+        <h3 id="impostazioni-lega" class="h4 mb-3">Impostazioni Lega</h3>
+
+        <!-- Each screenshot is its own card: the image sits in
+           "card-img-top" (the standard Bootstrap slot for an image
+           that spans the full width of the top of a card) and the
+           caption sits below it in "card-body" as "card-text". This is
+           exactly the kind of "picture + short caption" content a
+           Bootstrap card is designed for. -->
+        <div id="settings-tipo-crediti-card" class="card mb-3">
+          <img id="settings-tipo-crediti-image" class="card-img-top settings-screenshot"
+               src="assets/images/settings-tipo-crediti.png"
+               alt="Tipo lega, disponibilità calciatori e crediti iniziali">
+          <div class="card-body">
+            <p class="card-text text-center mb-0">Tipo lega, disponibilità calciatori e crediti iniziali</p>
+          </div>
+        </div>
+
+        <div id="settings-rosa-panchina-card" class="card mb-3">
+          <img id="settings-rosa-panchina-image" class="card-img-top settings-screenshot"
+               src="assets/images/settings-rosa-panchina.png"
+               alt="Configurazione rosa e panchina">
+          <div class="card-body">
+            <p class="card-text text-center mb-0">Configurazione rosa e panchina</p>
+          </div>
+        </div>
+
+        <div id="settings-sostituzioni-card" class="card mb-3">
+          <img id="settings-sostituzioni-image" class="card-img-top settings-screenshot"
+               src="assets/images/settings-sostituzioni.jpeg"
+               alt="Numero e tipo sostituzioni">
+          <div class="card-body">
+            <p class="card-text text-center mb-0">Numero e tipo sostituzioni</p>
+          </div>
+        </div>
+
+        <div id="settings-soglie-gol-card" class="card mb-3">
+          <img id="settings-soglie-gol-image" class="card-img-top settings-screenshot"
+               src="assets/images/settings-soglie-gol.png"
+               alt="Soglie gol">
+          <div class="card-body">
+            <p class="card-text text-center mb-0">Soglie gol</p>
+          </div>
+        </div>
+
+        <div id="settings-bonus-malus-card" class="card mb-4">
+          <img id="settings-bonus-malus-image" class="card-img-top settings-screenshot"
+               src="assets/images/settings-bonus-malus.png"
+               alt="Tabella bonus/malus">
+          <div class="card-body">
+            <p class="card-text text-center mb-0">Tabella bonus/malus</p>
+          </div>
+        </div>
+
+        <!-- Rinvii partite (kept as its own anchor target since the
+           navbar links directly to it). -->
+        <h3 id="rinvii-partite" class="h4 mb-3 rulebook-section">Rinvii partite</h3>
+
+        <div id="rinvii-partite-lt-3-card" class="card mb-3">
+          <div class="card-body">
+            <p>
+              <strong>Partite rinviate &lt; 3.</strong> Regola standard della lega: se le partite rinviate
+              vengono recuperate oltre l'inizio del turno successivo si procederà ad assegnare 6 politico.
+            </p>
+            <img id="rinvii-partite-nota-image" class="img-fluid settings-screenshot"
+                 src="assets/images/rinvii-partite-nota.jpeg"
+                 alt="Nota su partite nel lasso di tempo tra un turno e il successivo">
+            <p class="text-center text-muted mt-2 mb-0">Nota su partite nel lasso di tempo tra un turno e il successivo</p>
+          </div>
+        </div>
+
+        <div id="rinvii-partite-gte-3-card" class="card">
+          <div class="card-body">
+            <p class="mb-0">
+              <strong>Partite rinviate ≥ 3.</strong> Si aspetterà che vengano regolarmente disputate
+              "congelando" i voti fino al recupero delle partite stesse e calcolando al termine
+              dell'ultimo recupero.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+         3. REGOLAMENTO FORMAZIONI NON SCHIERATE
+         =============================================================== -->
+      <section id="formazioni-non-schierate" class="mb-5 rulebook-section">
+        <h2 class="mb-3">3. Regolamento formazioni non schierate</h2>
+        <div id="formazioni-non-schierate-card" class="card">
+          <div id="formazioni-non-schierate-content" class="card-body">
+            <p>Il regolamento prevede per la definizione della regola 2 fattori + 1 condizione:</p>
+            <ul>
+              <li id="fattore-soglia"><strong>Fattore soglia.</strong> Percentuale di "soglia" sulle formazioni non schierate → 20%</li>
+              <li id="fattore-multa"><strong>Fattore multa.</strong> Multa per ogni formazione non schierata → 5 €.</li>
+              <li id="condizione-anno-piu-1"><strong>Condizione anno +1.</strong> Il versamento della multa è prerogativa dell'iscrizione al fantacalcio dell'anno successivo.</li>
+            </ul>
+            <p>La soglia lavora come inibitore della penale → se e solo se viene superata la soglia si applicano le penali.</p>
+            <p class="mb-0">La multa verrà raccolta entro l'asta anno successivo → se non corrisposta impedirà l'iscrizione della squadra al campionato.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+         4. METODO OSNAGHI PER L'ASTA DI RIPARAZIONE
+         =============================================================== -->
+      <section id="metodo-osnaghi" class="mb-5 rulebook-section">
+        <h2 class="mb-3">4. Metodo Osnaghi per l'asta di riparazione</h2>
+
+        <div id="metodo-osnaghi-card" class="card mb-4">
+          <div id="metodo-osnaghi-content" class="card-body">
+            <p>Il metodo è stato introdotto per risolvere tre problemi del metodo di vendita al valore di quotazione:</p>
+            <ol>
+              <li>Prendere tanti giocatori a 1 consentiva di fare plusvalenze regolari ma poco sensate per finanziare l'asta di gennaio;</li>
+              <li>Il nostro sistema penalizzava chi compra giocatori pagandoli tanto che poi subiscono infortuni gravi o vengono venduti all'estero perché la loro quotazione a febbraio quando li vendiamo è inevitabilmente crollata;</li>
+              <li>Il nostro sistema disincentivava la liberazione di giocatori forti a gennaio perché avrebbe sempre comportato una perdita ingente di crediti rendendo così meno interessante l'asta di gennaio.</li>
+            </ol>
+            <p class="mb-0">
+              Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio recuperando un numero di crediti
+              calcolato applicando al valore di acquisto la medesima variazione percentuale che intercorre tra la
+              Quotazione Iniziale Mantra e la Quotazione Attuale Mantra al momento della chiusura del mercato di
+              riparazione della Serie A. Se il calcolo restituisce un numero con la virgola esso viene arrotondato
+              all'intero superiore (se il calcolo dà 2,7 il valore sarà 3, se il risultato è 8,1 sarà 9) per favorire
+              l'immissione in circolazione di crediti per finanziare l'asta ed evitare casistiche in cui il calcolo
+              possa restituire il valore 0.
+            </p>
+          </div>
+        </div>
+
+        <h4 id="esempi-metodo-osnaghi" class="h5 mb-3">Esempi esplicativi della norma:</h4>
+
+        <div id="esempio-lautaro-card" class="card mb-3">
+          <div class="card-body">
+            <p id="esempio-lautaro" class="mb-0">
+              Lautaro viene acquistato per 120 crediti a settembre quando sul sito ha una Quotazione Iniziale
+              Mantra di 40; purtroppo a ottobre incorre in un grave infortunio e la sua Quotazione Mantra Attuale
+              risulta dimezzata a 20 il giorno 01/02 di chiusura del mercato di riparazione della Serie A.
+              Liberandolo si riceverà il prezzo a cui è stato acquistato ma dimezzato, quindi 60.
+            </p>
+          </div>
+        </div>
+
+        <div id="esempio-romano-card" class="card mb-4">
+          <div class="card-body">
+            <p id="esempio-romano" class="mb-0">
+              Romano Floriani Mussolini viene pagato 1 a settembre quando sul sito ha Quotazione Iniziale Mantra
+              pari a 3: le sue prestazioni nella prima parte di stagione sono ottime e alla chiusura del mercato
+              di riparazione della Serie A la sua Quotazione Attuale Mantra è salita a 30, decuplicando.
+              Liberandolo si guadagnerà esattamente dieci volte il prezzo a cui lo avete pagato a settembre,
+              quindi 10 crediti.
+            </p>
+          </div>
+        </div>
+
+        <p id="metodo-osnaghi-footer">Nella giornata successiva alla chiusura del mercato di riparazione verrà effettuato il calcolo delle quotazioni secondo il Metodo Osnaghi e inviato a tutti i partecipanti.</p>
+      </section>
+    </div>
+
+    <!-- ===================================================================
+       FOOTER
+       ---------------------------------------------------------------
+       Same footer markup copy-pasted on all three pages.
+       =================================================================== -->
+    <footer id="main-footer" class="bg-dark text-light text-center py-4">
+      <p id="footer-text" class="mb-0">Regolamento Fantacalcio QDS — Rev05 — 02/09/2025</p>
+    </footer>
+
+    <!-- Bootstrap's own bundled JavaScript (includes Popper). This is a
+       vendor script from the CDN, not our own code: it is what reads
+       the "data-bs-toggle"/"data-bs-target" attributes on the
+       hamburger button above and makes the mobile menu open/close.
+       We do not have to write that logic ourselves any more. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Our own custom JavaScript, loaded last. See script.js for why it
+       is intentionally almost empty now that Bootstrap handles the
+       navigation menu for us. -->
+    <script src="script.js"></script>
+  </body>
+</html>
