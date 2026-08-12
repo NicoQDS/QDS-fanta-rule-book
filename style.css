@@ -18,12 +18,11 @@
 
    To re-theme the site, you only need to edit the hex codes
    ("#rrggbb") in THIS block — every place that color is used
-   (navbar, hero banner, footer, card headers, links) updates
-   automatically, because they all point back to these variables.
+   (navbar, footer, card headers, links) updates automatically,
+   because they all point back to these variables.
    ------------------------------------------------------------------- */
 :root {
   --site-color-navbar: #2a2f34;      /* top navigation bar background */
-  --site-color-hero: #FFA733;        /* big page-title banner background */
   --site-color-footer: #212529;      /* bottom footer background */
   --site-color-card-header: #212529; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
   --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
@@ -53,41 +52,6 @@
      utility class (which we used on the navbar in index.html) is
      ALSO written with "!important", so a normal rule would lose to it. */
   background-color: var(--site-color-navbar) !important;
-}
-
-#hero-title {
-  /* Same reasoning: overrides Bootstrap's ".bg-info-subtle" utility
-     class, which also uses "!important". */
-  background-color: var(--site-color-hero) !important;
-
-  /* The hero markup also has Bootstrap's ".py-5" utility class (3rem
-     top/bottom padding), and like the background utilities above,
-     ".py-5" is written with "!important" — so our override needs
-     "!important" too, otherwise it loses even though "#hero-title" is
-     more specific. Shared by all three pages since they all reuse the
-     same "#hero-title" id in their copy-pasted hero markup. */
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-}
-
-#page-title {
-  /* Bootstrap's ".display-5" class sizes this text with a responsive
-     formula that grows with viewport width (calc(1.425rem + 2.1vw)),
-     capped at 3rem on wide screens. We scale both the formula and the
-     cap down by 20% (x0.8) so the title shrinks proportionally at
-     every screen size. Shared by all three pages since they all reuse
-     the same "#page-title" id in their copy-pasted hero markup. Our id
-     selector is more specific than ".display-5"'s class selector, so
-     this plain override wins without "!important". */
-  font-size: calc((1.425rem + 2.1vw) * 0.85);
-}
-
-@media (min-width: 1200px) {
-  #page-title {
-    /* Matches Bootstrap's own >=1200px cap (3rem), scaled by the same
-       20% (3rem x 0.8 = 2.4rem). */
-    font-size: 2.4rem;
-  }
 }
 
 #main-footer {
@@ -195,7 +159,21 @@ html {
    starts right below it instead of being hidden behind it.
    ------------------------------------------------------------------- */
 body {
-  padding-top: 3.5rem; /* roughly the height of a Bootstrap navbar with our slightly smaller base font-size */
+  padding-top: 5rem; /* navbar height (3.5rem) + 18px extra gap below it */
+}
+
+/* -----------------------------------------------------------------
+   Footer always visible
+   -------------------------------------------------------------------
+   The footer uses Bootstrap's "fixed-bottom", which pins it to the
+   bottom of the viewport at all times (no scrolling needed), the
+   same way "fixed-top" pins the navbar. Since it's taken out of the
+   normal page flow, this bottom padding on the body reserves space
+   equal to the footer's height so page content never ends up hidden
+   underneath it.
+   ------------------------------------------------------------------- */
+body {
+  padding-bottom: 4.5rem; /* roughly the height of the footer with our slightly smaller base font-size */
 }
 
 /* -----------------------------------------------------------------
