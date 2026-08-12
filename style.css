@@ -118,7 +118,7 @@ a {
    text, everything — without having to touch any Bootstrap variable.
    ------------------------------------------------------------------- */
 html {
-  font-size: 80%;
+  font-size: 90%;
 }
 
 /* -----------------------------------------------------------------
@@ -226,7 +226,34 @@ html {
    a table cell, so we bump the padding up a bit to give the pill more
    breathing room. */
 #palmares-table .badge {
-  padding: 5px;
+  padding: 5px 12px;
   /* Bootstrap's ".badge" defaults to "font-weight: 700" (bold). */
   font-weight: normal;
+  /* Bootstrap's ".badge" defaults to "font-size: .75em" (75% of the
+     surrounding text) — bump it back up to full size so the numbers
+     are easier to read at a glance. */
+  font-size: 1rem;
+}
+
+/* The "0" badges use Bootstrap's ".text-bg-secondary" class, whose
+   default gray (#6c757d) reads too dark/heavy for a "nothing won"
+   value. We lighten just the background here and switch to dark text
+   so it stays readable on top of it. */
+#palmares-table .text-bg-secondary {
+  background-color: #adb5bde7 !important;
+  color: #212529 !important;
+}
+
+/* Non-zero "Serie A" / "Serie B" badges get their own custom colors
+   (instead of Bootstrap's ".text-bg-warning") to visually match each
+   league. Navy for Serie A needs light text; the lighter green for
+   Serie B reads better with dark text. */
+#palmares-table .badge-serie-a {
+  background-color: #2e5ddf;
+  color: #ffffff;
+}
+
+#palmares-table .badge-serie-b {
+  background-color: #82c730;
+  color: #212529;
 }
