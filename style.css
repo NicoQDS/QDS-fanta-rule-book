@@ -238,6 +238,39 @@ html {
 }
 
 /* -----------------------------------------------------------------
+   League result lists — gold/silver/bronze left border
+   -------------------------------------------------------------------
+   Every season's ranking is a "list-group-numbered" list; the 1st,
+   2nd and 3rd "li" in each one gets a colored left border (gold,
+   silver, bronze) so the podium stands out at a glance. Scoped to
+   "#albo-risultati" so it only touches these ranking lists.
+   ------------------------------------------------------------------- */
+#albo-risultati .list-group-item:nth-child(1) {
+  border-left: 4px solid #ffd700;
+}
+
+#albo-risultati .list-group-item:nth-child(2) {
+  border-left: 4px solid #c0c0c0;
+}
+
+#albo-risultati .list-group-item:nth-child(3) {
+  border-left: 4px solid #cd7f32;
+}
+
+/* Relegation zone: bottom 3 of Serie A, bottom 1 of Serie B. Matched
+   by id suffix ("-serie-a-table" / "-serie-b-table") since that's
+   what tells the two columns apart — there's no dedicated class. */
+#albo-risultati ol[id$="-serie-a-table"] .list-group-item:nth-child(6),
+#albo-risultati ol[id$="-serie-a-table"] .list-group-item:nth-child(7),
+#albo-risultati ol[id$="-serie-a-table"] .list-group-item:nth-child(8) {
+  border-left: 4px solid #dc3545;
+}
+
+#albo-risultati ol[id$="-serie-b-table"] .list-group-item:nth-child(8) {
+  border-left: 4px solid #dc3545;
+}
+
+/* -----------------------------------------------------------------
    Palmarès table — evenly spaced columns
    -------------------------------------------------------------------
    By default an HTML table sizes each column based on its content
