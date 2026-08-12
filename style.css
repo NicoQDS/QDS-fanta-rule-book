@@ -25,10 +25,17 @@
   --site-color-navbar: #212529;      /* top navigation bar background */
   --site-color-hero: #ffa012;        /* big page-title banner background */
   --site-color-footer: #212529;      /* bottom footer background */
-  --site-color-card-header: #9E9E9E; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
+  --site-color-card-header: #ffa012; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
   --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
   --site-color-navbar-links: #ffa012; /* text color of the links inside the navbar menu (#navbar-menu-links) */
   --site-color-navbar-brand: #ffa012; /* text color of the site title link in the navbar (#navbar-brand-link) */
+
+  /* Text styling for the little header strip at the top of cards
+     (e.g. "Serie A", "Serie B", "Palmarès", each season). Edit these
+     to change how that text looks everywhere at once. */
+  --site-card-header-text-color: #212529;   /* text color */
+  --site-card-header-font-size: 1rem;       /* text size */
+  --site-card-header-font-weight: 700;      /* text boldness (400 = normal, 700 = bold) */
 }
 
 #main-navbar {
@@ -53,6 +60,26 @@
   padding-bottom: 20px !important;
 }
 
+#page-title {
+  /* Bootstrap's ".display-5" class sizes this text with a responsive
+     formula that grows with viewport width (calc(1.425rem + 2.1vw)),
+     capped at 3rem on wide screens. We scale both the formula and the
+     cap down by 20% (x0.8) so the title shrinks proportionally at
+     every screen size. Shared by all three pages since they all reuse
+     the same "#page-title" id in their copy-pasted hero markup. Our id
+     selector is more specific than ".display-5"'s class selector, so
+     this plain override wins without "!important". */
+  font-size: calc((1.425rem + 2.1vw) * 0.8);
+}
+
+@media (min-width: 1200px) {
+  #page-title {
+    /* Matches Bootstrap's own >=1200px cap (3rem), scaled by the same
+       20% (3rem x 0.8 = 2.4rem). */
+    font-size: 2.4rem;
+  }
+}
+
 #main-footer {
   /* Same reasoning: overrides Bootstrap's ".bg-dark" utility class. */
   background-color: var(--site-color-footer) !important;
@@ -62,6 +89,9 @@
   /* Bootstrap's own card-header rule has no "!important", so a plain
      override (no "!important" needed) is enough here. */
   background-color: var(--site-color-card-header);
+  color: var(--site-card-header-text-color);
+  font-size: var(--site-card-header-font-size);
+  font-weight: var(--site-card-header-font-weight);
 }
 
 a {
@@ -118,7 +148,7 @@ a {
    text, everything — without having to touch any Bootstrap variable.
    ------------------------------------------------------------------- */
 html {
-  font-size: 90%;
+  font-size: 85%;
 }
 
 /* -----------------------------------------------------------------
@@ -211,6 +241,14 @@ html {
 #palmares-table th,
 #palmares-table td {
   width: 25%;
+
+  /* The ".table-bordered" class draws a full grid (horizontal AND
+     vertical lines). We only want the horizontal ones, so we zero out
+     the left/right border width on every cell. Our id-selector rule
+     is more specific than ".table-bordered"'s own selector, so this
+     plain override wins without "!important". */
+  border-left-width: 0;
+  border-right-width: 0;
 }
 
 /* Center the three trophy-count columns (everything but "Nome"), so
