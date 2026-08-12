@@ -238,23 +238,6 @@ html {
 }
 
 /* -----------------------------------------------------------------
-   League result tables — maximize the player-name column
-   -------------------------------------------------------------------
-   Every season card in "Albo risultati" has a small results table
-   with a "#" column (the ranking) and a "Squadra" column (the player
-   name). By default an HTML table splits the width evenly between
-   columns; "width: 1%" on the "#" column is a classic table trick
-   that tells the browser "shrink this column to fit its content",
-   which pushes all the leftover width onto the other column instead.
-   Scoped to "#albo-risultati" and excluding "#palmares-table" (which
-   has its own even 25%/25%/25%/25% column-width rule already). */
-#albo-risultati table:not(#palmares-table) th:first-child,
-#albo-risultati table:not(#palmares-table) td:first-child {
-  width: 1%;
-  white-space: nowrap;
-}
-
-/* -----------------------------------------------------------------
    Palmarès table — evenly spaced columns
    -------------------------------------------------------------------
    By default an HTML table sizes each column based on its content
