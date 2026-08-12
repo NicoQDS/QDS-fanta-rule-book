@@ -124,12 +124,12 @@
            (so the two cards still stack if there really is no room),
            and "col-sm-6" means "take half the row" from the "sm"
            breakpoint (576px) upward, which is where these two narrow
-           tables comfortably fit side by side. The "card-header"
-           strip on each card labels which Serie it is about. -->
+           tables comfortably fit side by side. A plain heading above
+           each card labels which Serie it is about. -->
         <div id="serie-a-serie-b-teams-row" class="row mb-4">
           <div id="serie-a-teams-col" class="col-12 col-sm-6">
-            <div id="serie-a-teams-card" class="card">
-              <div class="card-header">Serie A</div>
+            <h3 id="serie-a-teams-card" class="h5 mb-2 card-label">Serie A</h3>
+            <div class="card">
               <div class="card-body">
                 <div id="serie-a-teams-table-container" class="table-responsive">
                   <table id="serie-a-teams-table" class="table table-bordered table-striped mb-0">
@@ -151,8 +151,8 @@
           </div>
 
           <div id="serie-b-teams-col" class="col-12 col-sm-6">
-            <div id="serie-b-teams-card" class="card">
-              <div class="card-header">Serie B</div>
+            <h3 id="serie-b-teams-card" class="h5 mb-2 card-label">Serie B</h3>
+            <div class="card">
               <div class="card-body">
                 <div id="serie-b-teams-table-container" class="table-responsive">
                   <table id="serie-b-teams-table" class="table table-bordered table-striped mb-0">
@@ -180,8 +180,8 @@
           La quota di iscrizione è di 70 €/squadra per la Serie A e 50 €/squadra per la Serie B.
         </p>
 
-        <div id="serie-a-prizes-card" class="card mb-3">
-          <div class="card-header">Serie A</div>
+        <h3 id="serie-a-prizes-card" class="h5 mb-2 card-label">Serie A</h3>
+        <div class="card mb-3">
           <div class="card-body">
             <div id="serie-a-prizes-table-container" class="table-responsive">
               <table id="serie-a-prizes-table" class="table table-bordered table-striped mb-0">
@@ -201,8 +201,8 @@
           </div>
         </div>
 
-        <div id="serie-b-prizes-card" class="card mb-4">
-          <div class="card-header">Serie B</div>
+        <h3 id="serie-b-prizes-card" class="h5 mb-2 card-label">Serie B</h3>
+        <div class="card mb-4">
           <div class="card-body">
             <div id="serie-b-prizes-table-container" class="table-responsive">
               <table id="serie-b-prizes-table" class="table table-bordered table-striped mb-0">

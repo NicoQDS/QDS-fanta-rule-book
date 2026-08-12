@@ -18,23 +18,16 @@
 
    To re-theme the site, you only need to edit the hex codes
    ("#rrggbb") in THIS block — every place that color is used
-   (navbar, footer, card headers, links) updates automatically,
-   because they all point back to these variables.
+   (navbar, footer, links) updates automatically, because they all
+   point back to these variables.
    ------------------------------------------------------------------- */
 :root {
   --site-color-navbar: #2a2f34;      /* top navigation bar background */
   --site-color-footer: #212529;      /* bottom footer background */
-  --site-color-card-header: #FFA733; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
+  --site-color-albo-title-card: #FFA733; /* "Albo risultati" title card background, on index.html */
   --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
   --site-color-navbar-links: #FFA733; /* text color of the links inside the navbar menu (#navbar-menu-links) */
   --site-color-navbar-brand: #FFA733; /* text color of the site title link in the navbar (#navbar-brand-link) */
-
-  /* Text styling for the little header strip at the top of cards
-     (e.g. "Serie A", "Serie B", "Palmarès", each season). Edit these
-     to change how that text looks everywhere at once. */
-  --site-card-header-text-color: #2a2f34;   /* text color */
-  --site-card-header-font-size: 1.02rem;       /* text size */
-  --site-card-header-font-weight: 600;      /* text boldness (400 = normal, 700 = bold) */
 
   /* Colors for the "Lega unica" (non-zero) trophy-count badges in the
      Palmarès table. Edit these to change how those badges look. */
@@ -45,6 +38,27 @@
      (#navbar-brand-link). Edit these to change how it looks. */
   --site-navbar-brand-font-size: 1.25rem; /* text size */
   --site-navbar-brand-font-weight: 700;   /* text boldness (400 = normal, 700 = bold) */
+
+  /* Text styling for the plain-text labels sitting above cards
+     (e.g. "Palmarès", "Serie A", "Serie B", each season year — id
+     "#year-2024-2025" and similar). Edit these to change how that
+     text looks everywhere at once. */
+  --site-card-label-text-color: #212529; /* text color */
+  --site-card-label-font-size: 1.2rem;  /* text size */
+  --site-card-label-font-weight: 400;    /* text boldness (400 = normal, 700 = bold) */
+
+  /* Padding of the "Albo risultati" title card's body
+     (#albo-risultati-title-card-body, on index.html). Edit these to
+     change how much space surrounds the "Albo risultati" text. */
+  --site-albo-title-card-body-padding-y: 1rem; /* top/bottom padding */
+  --site-albo-title-card-body-padding-x: 1rem; /* left/right padding */
+
+  /* Text styling of the "Albo risultati" title itself
+     (#albo-risultati-title-text, on index.html). Edit these to change
+     how that text looks. */
+  --site-albo-title-text-color: white; /* text color */
+  --site-albo-title-font-size: 1.6rem;   /* text size */
+  --site-albo-title-font-weight: 500;    /* text boldness (400 = normal, 700 = bold) */
 }
 
 #main-navbar {
@@ -59,13 +73,38 @@
   background-color: var(--site-color-footer) !important;
 }
 
-.card-header {
-  /* Bootstrap's own card-header rule has no "!important", so a plain
-     override (no "!important" needed) is enough here. */
-  background-color: var(--site-color-card-header);
-  color: var(--site-card-header-text-color);
-  font-size: var(--site-card-header-font-size);
-  font-weight: var(--site-card-header-font-weight);
+#albo-risultati-title-card {
+  /* Bootstrap's own card has no background utility applied here, so a
+     plain override (no "!important" needed) is enough. */
+  background-color: var(--site-color-albo-title-card);
+}
+
+#albo-risultati-title-card-body {
+  /* Overrides Bootstrap's own ".card-body" padding (no "!important"
+     needed: this id selector is already more specific). */
+  padding-top: var(--site-albo-title-card-body-padding-y);
+  padding-bottom: var(--site-albo-title-card-body-padding-y);
+  padding-left: var(--site-albo-title-card-body-padding-x);
+  padding-right: var(--site-albo-title-card-body-padding-x);
+}
+
+#albo-risultati-title-text {
+  /* Overrides Bootstrap's default responsive "h2" sizing (no
+     "!important" needed: this id selector is already more specific). */
+  color: var(--site-albo-title-text-color);
+  font-size: var(--site-albo-title-font-size);
+  font-weight: var(--site-albo-title-font-weight);
+}
+
+.card-label {
+  /* Plain-text label sitting above a card (id "#palmares",
+     "#year-2024-2025" and similar, "#serie-a-teams-card", etc), used
+     together with Bootstrap's own ".h5" class. Same specificity as
+     ".h5", but this file loads after Bootstrap's stylesheet, so this
+     plain override wins the tie without needing "!important". */
+  color: var(--site-card-label-text-color);
+  font-size: var(--site-card-label-font-size);
+  font-weight: var(--site-card-label-font-weight);
 }
 
 a {
@@ -159,7 +198,7 @@ html {
    starts right below it instead of being hidden behind it.
    ------------------------------------------------------------------- */
 body {
-  padding-top: 5rem; /* navbar height (3.5rem) + 18px extra gap below it */
+  padding-top: 4.5rem; /* navbar height (3.5rem) + 18px extra gap below it */
 }
 
 /* -----------------------------------------------------------------
