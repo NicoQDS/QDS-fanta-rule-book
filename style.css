@@ -22,20 +22,30 @@
    automatically, because they all point back to these variables.
    ------------------------------------------------------------------- */
 :root {
-  --site-color-navbar: #212529;      /* top navigation bar background */
-  --site-color-hero: #ffa012;        /* big page-title banner background */
+  --site-color-navbar: #2a2f34;      /* top navigation bar background */
+  --site-color-hero: #FFA733;        /* big page-title banner background */
   --site-color-footer: #212529;      /* bottom footer background */
-  --site-color-card-header: #ffa012; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
+  --site-color-card-header: #212529; /* the little header strip at the top of cards (e.g. "Serie A", "Serie B", each season) */
   --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
-  --site-color-navbar-links: #ffa012; /* text color of the links inside the navbar menu (#navbar-menu-links) */
-  --site-color-navbar-brand: #ffa012; /* text color of the site title link in the navbar (#navbar-brand-link) */
+  --site-color-navbar-links: #FFA733; /* text color of the links inside the navbar menu (#navbar-menu-links) */
+  --site-color-navbar-brand: #FFA733; /* text color of the site title link in the navbar (#navbar-brand-link) */
 
   /* Text styling for the little header strip at the top of cards
      (e.g. "Serie A", "Serie B", "Palmarès", each season). Edit these
      to change how that text looks everywhere at once. */
-  --site-card-header-text-color: #212529;   /* text color */
-  --site-card-header-font-size: 1rem;       /* text size */
-  --site-card-header-font-weight: 700;      /* text boldness (400 = normal, 700 = bold) */
+  --site-card-header-text-color: #ffffff;   /* text color */
+  --site-card-header-font-size: 1.02rem;       /* text size */
+  --site-card-header-font-weight: 500;      /* text boldness (400 = normal, 700 = bold) */
+
+  /* Colors for the "Lega unica" (non-zero) trophy-count badges in the
+     Palmarès table. Edit these to change how those badges look. */
+  --site-badge-lega-unica-bg: #ffc107;   /* fill color */
+  --site-badge-lega-unica-text: #212529; /* text color */
+
+  /* Text styling for the site title link in the navbar
+     (#navbar-brand-link). Edit these to change how it looks. */
+  --site-navbar-brand-font-size: 1.25rem; /* text size */
+  --site-navbar-brand-font-weight: 700;   /* text boldness (400 = normal, 700 = bold) */
 }
 
 #main-navbar {
@@ -69,7 +79,7 @@
      the same "#page-title" id in their copy-pasted hero markup. Our id
      selector is more specific than ".display-5"'s class selector, so
      this plain override wins without "!important". */
-  font-size: calc((1.425rem + 2.1vw) * 0.8);
+  font-size: calc((1.425rem + 2.1vw) * 0.85);
 }
 
 @media (min-width: 1200px) {
@@ -115,7 +125,9 @@ a {
   /* Targets the site title link by its own id, which is more specific
      than Bootstrap's own ".navbar-brand" class rule, so it wins
      without needing "!important". */
-  color: var(--site-color-navbar-brand);
+  color: white;
+  font-size: var(--site-navbar-brand-font-size);
+  font-weight: var(--site-navbar-brand-font-weight);
 }
 
 /* -----------------------------------------------------------------
@@ -226,6 +238,23 @@ html {
 }
 
 /* -----------------------------------------------------------------
+   League result tables — maximize the player-name column
+   -------------------------------------------------------------------
+   Every season card in "Albo risultati" has a small results table
+   with a "#" column (the ranking) and a "Squadra" column (the player
+   name). By default an HTML table splits the width evenly between
+   columns; "width: 1%" on the "#" column is a classic table trick
+   that tells the browser "shrink this column to fit its content",
+   which pushes all the leftover width onto the other column instead.
+   Scoped to "#albo-risultati" and excluding "#palmares-table" (which
+   has its own even 25%/25%/25%/25% column-width rule already). */
+#albo-risultati table:not(#palmares-table) th:first-child,
+#albo-risultati table:not(#palmares-table) td:first-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* -----------------------------------------------------------------
    Palmarès table — evenly spaced columns
    -------------------------------------------------------------------
    By default an HTML table sizes each column based on its content
@@ -264,7 +293,7 @@ html {
    a table cell, so we bump the padding up a bit to give the pill more
    breathing room. */
 #palmares-table .badge {
-  padding: 5px 12px;
+  padding: 5px 10px;
   /* Bootstrap's ".badge" defaults to "font-weight: 700" (bold). */
   font-weight: normal;
   /* Bootstrap's ".badge" defaults to "font-size: .75em" (75% of the
@@ -274,11 +303,11 @@ html {
 }
 
 /* The "0" badges use Bootstrap's ".text-bg-secondary" class, whose
-   default gray (#6c757d) reads too dark/heavy for a "nothing won"
-   value. We lighten just the background here and switch to dark text
-   so it stays readable on top of it. */
+   default gray fill (#6c757d) reads too dark/heavy for a "nothing
+   won" value. We drop the fill entirely and use a thin gray outline
+   instead, so a "0" reads as empty at a glance. */
 #palmares-table .text-bg-secondary {
-  background-color: #eae8e8 !important;
+  background-color: #abb0b549 !important;
   color: var(--site-color-navbar) !important;
 }
 
@@ -286,8 +315,13 @@ html {
    (instead of Bootstrap's ".text-bg-warning") to visually match each
    league. Navy for Serie A needs light text; the lighter green for
    Serie B reads better with dark text. */
+#palmares-table .badge-lega-unica {
+  background-color: var(--site-badge-lega-unica-bg);
+  color: var(--site-badge-lega-unica-text);
+}
+
 #palmares-table .badge-serie-a {
-  background-color: #2edfdc;
+  background-color: #92faf8;
   color: var(--site-color-navbar);
 }
 
