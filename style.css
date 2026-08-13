@@ -202,17 +202,25 @@ body {
 }
 
 /* -----------------------------------------------------------------
-   Footer always visible
+   Footer pinned to bottom, in normal flow
    -------------------------------------------------------------------
-   The footer uses Bootstrap's "fixed-bottom", which pins it to the
-   bottom of the viewport at all times (no scrolling needed), the
-   same way "fixed-top" pins the navbar. Since it's taken out of the
-   normal page flow, this bottom padding on the body reserves space
-   equal to the footer's height so page content never ends up hidden
-   underneath it.
+   The footer sits after #page-container in normal document flow (no
+   longer "fixed-bottom"), so it's only visible once scrolled to. On
+   short pages, this flex layout still keeps it flush with the bottom
+   of the viewport instead of floating right under the content.
    ------------------------------------------------------------------- */
 body {
-  padding-bottom: 4.5rem; /* roughly the height of the footer with our slightly smaller base font-size */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#page-container {
+  flex: 1 0 auto;
+}
+
+#main-footer {
+  flex-shrink: 0;
 }
 
 /* -----------------------------------------------------------------
