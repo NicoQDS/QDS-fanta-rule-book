@@ -609,3 +609,20 @@ html {
   background-color: #ffd700;
   color: var(--site-color-navbar);
 }
+
+#metodo-osnaghi-content,
+#esempi-metodo-osnaghi-list {
+  border-left: 4px solid #adb5bd;
+  background-color: #f8f9fa;
+}
+
+#metodo-osnaghi-problemi-list {
+  background-color: #f8f9fa;
+}
+
+/* Bootstrap's ".list-group-item" sets its own opaque white background,
+   which otherwise hides the grey background set on the list above. */
+#metodo-osnaghi-problemi-list .list-group-item,
+#esempi-metodo-osnaghi-list .list-group-item {
+  background-color: #f8f9fa;
+}

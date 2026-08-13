@@ -689,33 +689,35 @@
             id="formazioni-non-schierate-card-header"
             class="card-header rulebook-card-header"
           >
-            <h2 class="mb-0">3. Regolamento formazioni non schierate</h2>
+            <h2 class="mb-0">Formazioni non schierate</h2>
           </div>
           <div id="formazioni-non-schierate-content" class="card-body">
+            <div id="formazioni-non-schierate-fattori-card" class="card mb-3">
+              <ul
+                id="formazioni-non-schierate-fattori-list"
+                class="list-group list-group-flush"
+              >
+                <li id="fattore-soglia" class="list-group-item">
+                  <strong>Soglia.</strong> Percentuale di "soglia" sulle
+                  formazioni non schierate: 20%
+                </li>
+                <li id="fattore-multa" class="list-group-item">
+                  <strong>Multa.</strong> Multa per ogni formazione non
+                  schierata: 5 €.
+                </li>
+                <li id="condizione-anno-piu-1" class="list-group-item">
+                  <strong>Vincolo anno +1.</strong> Il versamento della multa è
+                  prerogativa dell'iscrizione al fantacalcio dell'anno
+                  successivo.
+                </li>
+              </ul>
+            </div>
             <p>
-              Il regolamento prevede per la definizione della regola 2 fattori +
-              1 condizione:
-            </p>
-            <ul>
-              <li id="fattore-soglia">
-                <strong>Fattore soglia.</strong> Percentuale di "soglia" sulle
-                formazioni non schierate → 20%
-              </li>
-              <li id="fattore-multa">
-                <strong>Fattore multa.</strong> Multa per ogni formazione non
-                schierata → 5 €.
-              </li>
-              <li id="condizione-anno-piu-1">
-                <strong>Condizione anno +1.</strong> Il versamento della multa è
-                prerogativa dell'iscrizione al fantacalcio dell'anno successivo.
-              </li>
-            </ul>
-            <p>
-              La soglia lavora come inibitore della penale → se e solo se viene
+              La soglia lavora come inibitore della penale; se e solo se viene
               superata la soglia si applicano le penali.
             </p>
             <p class="mb-0">
-              La multa verrà raccolta entro l'asta anno successivo → se non
+              La multa verrà raccolta entro l'asta anno successivo. Se non
               corrisposta impedirà l'iscrizione della squadra al campionato.
             </p>
           </div>
@@ -731,56 +733,85 @@
             id="metodo-osnaghi-card-header"
             class="card-header rulebook-card-header"
           >
-            <h2 class="mb-0">4. Metodo Osnaghi per l'asta di riparazione</h2>
+            <h2 class="mb-0">Asta di riparazione</h2>
           </div>
           <div id="metodo-osnaghi-top-info" class="card-body">
+            <h3
+              id="metodo-osnaghi-heading"
+              class="h4 mb-3 girone-subsection-heading"
+            >
+              Metodo Osnaghi
+            </h3>
+            <div id="metodo-osnaghi-descrizione-card" class="card mb-4">
+              <div id="metodo-osnaghi-descrizione-info" class="card-body">
+                <p class="mb-0">
+                  Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio
+                  recuperando un numero di crediti calcolato applicando al
+                  valore di acquisto la medesima variazione percentuale tra la
+                  Quotazione Iniziale Mantra e la Quotazione Attuale Mantra al
+                  momento della chiusura del mercato invernale.<br />
+                  <br />Se il calcolo restituisce un numero con la virgola esso
+                  viene arrotondato all'intero superiore (se il calcolo dà 2,7
+                  il valore sarà 3, se il risultato è 8,1 sarà 9) per favorire
+                  l'immissione in circolazione di crediti per finanziare l'asta
+                  ed evitare casistiche in cui il calcolo possa restituire il
+                  valore 0.
+                </p>
+                <p id="metodo-osnaghi-footer">
+                  <br />Nella giornata successiva alla chiusura del mercato di
+                  riparazione verrà effettuato il calcolo delle quotazioni
+                  secondo il Metodo Osnaghi e inviato a tutti i partecipanti.
+                </p>
+              </div>
+            </div>
+
+            <h3
+              id="metodo-osnaghi-razionale-heading"
+              class="h4 mb-3 girone-subsection-heading"
+            >
+              Razionale
+            </h3>
             <div id="metodo-osnaghi-card" class="card mb-4">
               <div id="metodo-osnaghi-content" class="card-body">
                 <p>
                   Il metodo è stato introdotto per risolvere tre problemi del
                   metodo di vendita al valore di quotazione:
                 </p>
-                <ol>
-                  <li>
-                    Prendere tanti giocatori a 1 consentiva di fare plusvalenze
-                    regolari ma poco sensate per finanziare l'asta di gennaio;
-                  </li>
-                  <li>
-                    Il nostro sistema penalizzava chi compra giocatori pagandoli
-                    tanto che poi subiscono infortuni gravi o vengono venduti
-                    all'estero perché la loro quotazione a febbraio quando li
-                    vendiamo è inevitabilmente crollata;
-                  </li>
-                  <li>
-                    Il nostro sistema disincentivava la liberazione di giocatori
-                    forti a gennaio perché avrebbe sempre comportato una perdita
-                    ingente di crediti rendendo così meno interessante l'asta di
-                    gennaio.
-                  </li>
-                </ol>
-                <p class="mb-0">
-                  Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio
-                  recuperando un numero di crediti calcolato applicando al
-                  valore di acquisto la medesima variazione percentuale che
-                  intercorre tra la Quotazione Iniziale Mantra e la Quotazione
-                  Attuale Mantra al momento della chiusura del mercato di
-                  riparazione della Serie A. Se il calcolo restituisce un numero
-                  con la virgola esso viene arrotondato all'intero superiore (se
-                  il calcolo dà 2,7 il valore sarà 3, se il risultato è 8,1 sarà
-                  9) per favorire l'immissione in circolazione di crediti per
-                  finanziare l'asta ed evitare casistiche in cui il calcolo
-                  possa restituire il valore 0.
-                </p>
+                <div id="metodo-osnaghi-problemi-card" class="card mb-3">
+                  <ul
+                    id="metodo-osnaghi-problemi-list"
+                    class="list-group list-group-flush"
+                  >
+                    <li class="list-group-item">
+                      Prendere tanti giocatori a 1 consentiva di fare
+                      plusvalenze regolari ma poco sensate per finanziare l'asta
+                      di gennaio;
+                    </li>
+                    <li class="list-group-item">
+                      Il nostro sistema penalizzava chi compra giocatori
+                      pagandoli tanto che poi subiscono infortuni gravi o
+                      vengono venduti all'estero perché la loro quotazione a
+                      febbraio quando li vendiamo è inevitabilmente crollata;
+                    </li>
+                    <li class="list-group-item">
+                      Il nostro sistema disincentivava la liberazione di
+                      giocatori forti a gennaio perché avrebbe sempre comportato
+                      una perdita ingente di crediti rendendo così meno
+                      interessante l'asta di gennaio.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <h4 id="esempi-metodo-osnaghi" class="h5 mb-3">
-              Esempi esplicativi della norma:
-            </h4>
+            <h4 id="esempi-metodo-osnaghi" class="h5 mb-3">Esempi:</h4>
 
-            <div id="esempio-lautaro-card" class="card mb-3">
-              <div id="esempio-lautaro-info" class="card-body">
-                <p id="esempio-lautaro" class="mb-0">
+            <div id="esempi-metodo-osnaghi-card" class="card mb-4">
+              <ul
+                id="esempi-metodo-osnaghi-list"
+                class="list-group list-group-flush"
+              >
+                <li id="esempio-lautaro" class="list-group-item">
                   Lautaro viene acquistato per 120 crediti a settembre quando
                   sul sito ha una Quotazione Iniziale Mantra di 40; purtroppo a
                   ottobre incorre in un grave infortunio e la sua Quotazione
@@ -788,13 +819,8 @@
                   chiusura del mercato di riparazione della Serie A. Liberandolo
                   si riceverà il prezzo a cui è stato acquistato ma dimezzato,
                   quindi 60.
-                </p>
-              </div>
-            </div>
-
-            <div id="esempio-romano-card" class="card mb-4">
-              <div id="esempio-romano-info" class="card-body">
-                <p id="esempio-romano" class="mb-0">
+                </li>
+                <li id="esempio-romano-info" class="list-group-item">
                   Romano Floriani Mussolini viene pagato 1 a settembre quando
                   sul sito ha Quotazione Iniziale Mantra pari a 3: le sue
                   prestazioni nella prima parte di stagione sono ottime e alla
@@ -802,15 +828,9 @@
                   Quotazione Attuale Mantra è salita a 30, decuplicando.
                   Liberandolo si guadagnerà esattamente dieci volte il prezzo a
                   cui lo avete pagato a settembre, quindi 10 crediti.
-                </p>
-              </div>
+                </li>
+              </ul>
             </div>
-
-            <p id="metodo-osnaghi-footer">
-              Nella giornata successiva alla chiusura del mercato di riparazione
-              verrà effettuato il calcolo delle quotazioni secondo il Metodo
-              Osnaghi e inviato a tutti i partecipanti.
-            </p>
           </div>
         </div>
       </section>
@@ -824,7 +844,7 @@
             id="impostazioni-lega-card-header"
             class="card-header rulebook-card-header"
           >
-            <h2 class="mb-0">Impostazioni Lega</h2>
+            <h2 class="mb-0">Impostazioni sito Fantaleghe</h2>
           </div>
           <div id="impostazioni-lega-info" class="card-body">
             <!-- Each screenshot is its own card: the image sits in

@@ -103,18 +103,22 @@ La multa verrà raccolta entro l'asta anno successivo → se non corrisposta imp
 
 ## 4. Metodo Osnaghi per l'asta di riparazione
 
-Il metodo è stato introdotto per risolvere tre problemi del metodo di vendita al valore di quotazione:
-
-1. Prendere tanti giocatori a 1 consentiva di fare plusvalenze regolari ma poco sensate per finanziare l'asta di gennaio;
-2. Il nostro sistema penalizzava chi compra giocatori pagandoli tanto che poi subiscono infortuni gravi o vengono venduti all'estero perché la loro quotazione a febbraio quando li vendiamo è inevitabilmente crollata;
-3. Il nostro sistema disincentivava la liberazione di giocatori forti a gennaio perché avrebbe sempre comportato una perdita ingente di crediti rendendo così meno interessante l'asta di gennaio.
+### Metodo Osnaghi
 
 Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio recuperando un numero di crediti calcolato applicando al valore di acquisto la medesima variazione percentuale che intercorre tra la Quotazione Iniziale Mantra e la Quotazione Attuale Mantra al momento della chiusura del mercato di riparazione della Serie A. Se il calcolo restituisce un numero con la virgola esso viene arrotondato all'intero superiore (se il calcolo dà 2,7 il valore sarà 3, se il risultato è 8,1 sarà 9) per favorire l'immissione in circolazione di crediti per finanziare l'asta ed evitare casistiche in cui il calcolo possa restituire il valore 0.
 
+### Razionale
+
+Il metodo è stato introdotto per risolvere tre problemi del metodo di vendita al valore di quotazione:
+
+- Prendere tanti giocatori a 1 consentiva di fare plusvalenze regolari ma poco sensate per finanziare l'asta di gennaio;
+- Il nostro sistema penalizzava chi compra giocatori pagandoli tanto che poi subiscono infortuni gravi o vengono venduti all'estero perché la loro quotazione a febbraio quando li vendiamo è inevitabilmente crollata;
+- Il nostro sistema disincentivava la liberazione di giocatori forti a gennaio perché avrebbe sempre comportato una perdita ingente di crediti rendendo così meno interessante l'asta di gennaio.
+
 **Esempi esplicativi della norma:**
 
-1. Lautaro viene acquistato per 120 crediti a settembre quando sul sito ha una Quotazione Iniziale Mantra di 40; purtroppo a ottobre incorre in un grave infortunio e la sua Quotazione Mantra Attuale risulta dimezzata a 20 il giorno 01/02 di chiusura del mercato di riparazione della Serie A. Liberandolo si riceverà il prezzo a cui è stato acquistato ma dimezzato, quindi 60.
-2. Romano Floriani Mussolini viene pagato 1 a settembre quando sul sito ha Quotazione Iniziale Mantra pari a 3: le sue prestazioni nella prima parte di stagione sono ottime e alla chiusura del mercato di riparazione della Serie A la sua Quotazione Attuale Mantra è salita a 30, decuplicando. Liberandolo si guadagnerà esattamente dieci volte il prezzo a cui lo avete pagato a settembre, quindi 10 crediti.
+- Lautaro viene acquistato per 120 crediti a settembre quando sul sito ha una Quotazione Iniziale Mantra di 40; purtroppo a ottobre incorre in un grave infortunio e la sua Quotazione Mantra Attuale risulta dimezzata a 20 il giorno 01/02 di chiusura del mercato di riparazione della Serie A. Liberandolo si riceverà il prezzo a cui è stato acquistato ma dimezzato, quindi 60.
+- Romano Floriani Mussolini viene pagato 1 a settembre quando sul sito ha Quotazione Iniziale Mantra pari a 3: le sue prestazioni nella prima parte di stagione sono ottime e alla chiusura del mercato di riparazione della Serie A la sua Quotazione Attuale Mantra è salita a 30, decuplicando. Liberandolo si guadagnerà esattamente dieci volte il prezzo a cui lo avete pagato a settembre, quindi 10 crediti.
 
 Nella giornata successiva alla chiusura del mercato di riparazione verrà effettuato il calcolo delle quotazioni secondo il Metodo Osnaghi e inviato a tutti i partecipanti.
 
