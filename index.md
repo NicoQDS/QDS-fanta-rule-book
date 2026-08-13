@@ -129,36 +129,36 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 ### Palmarès
 
-| Nome | Girone unico | Serie A | Serie B |
-|------|:---:|:---:|:---:|
-| Carlo | 3 | 0 | 0 |
-| Giolla | 2 | 1 | 0 |
-| Mino | 2 | 1 | 0 |
-| Pobbi | 2 | 1 | 0 |
-| Nico | 2 | 0 | 0 |
-| Tommy | 2 | 0 | 0 |
-| Vinci | 2 | 0 | 0 |
-| Charlie | 1 | 1 | 0 |
-| Gio | 1 | 0 | 1 |
-| Zecca | 1 | 0 | 1 |
-| Fefe | 1 | 0 | 0 |
-| Impe | 1 | 0 | 0 |
-| Mary | 1 | 0 | 0 |
-| Ste Mora | 1 | 0 | 0 |
-| Toto | 1 | 0 | 0 |
-| Tia | 0 | 1 | 0 |
-| Bruno | 0 | 0 | 1 |
-| Ale Lissi | 0 | 0 | 0 |
-| Anto | 0 | 0 | 0 |
-| Confa | 0 | 0 | 0 |
-| Cri | 0 | 0 | 0 |
-| Gigia | 0 | 0 | 0 |
-| Manu | 0 | 0 | 0 |
-| Rey | 0 | 0 | 0 |
-| Rouge | 0 | 0 | 0 |
-| Teo Colo | 0 | 0 | 0 |
-| Teo Lanti | 0 | 0 | 0 |
-| Trilly | 0 | 0 | 0 |
+| Nome | TOT | Unico | A | B | Coppa |
+|------|:---:|:---:|:---:|:---:|:---:|
+| Pobbi | 4 | 2 | 1 |  | 1 |
+| Carlo | 3 | 3 |  |  |  |
+| Giolla | 3 | 2 | 1 |  |  |
+| Mino | 3 | 2 | 1 |  |  |
+| Zecca | 3 | 1 |  | 1 | 1 |
+| Nico | 2 | 2 |  |  |  |
+| Tommy | 2 | 2 |  |  |  |
+| Vinci | 2 | 2 |  |  |  |
+| Charlie | 2 | 1 | 1 |  |  |
+| Gio | 2 | 1 |  | 1 |  |
+| Tia | 2 |  | 1 |  | 1 |
+| Fefe | 1 | 1 |  |  |  |
+| Impe | 1 | 1 |  |  |  |
+| Mary | 1 | 1 |  |  |  |
+| Ste Mora | 1 | 1 |  |  |  |
+| Toto | 1 | 1 |  |  |  |
+| Bruno | 1 |  |  | 1 |  |
+| Cri | 1 |  |  |  | 1 |
+| Ale Lissi |  |  |  |  |  |
+| Anto |  |  |  |  |  |
+| Confa |  |  |  |  |  |
+| Gigia |  |  |  |  |  |
+| Manu |  |  |  |  |  |
+| Rey |  |  |  |  |  |
+| Rouge |  |  |  |  |  |
+| Teo Colo |  |  |  |  |  |
+| Teo Lanti |  |  |  |  |  |
+| Trilly |  |  |  |  |  |
 
 ### 2025-2026 — Diciassettesimo anno
 
@@ -171,22 +171,24 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 3° | Pobbi, Tia |
 | 4° | Manu |
 | 5° | Trilly |
-| 6° | Bruno |
-| 7° | Zecca |
-| 8° | Anto, Impe |
+| 6° | Bruno ↓ |
+| 7° | Zecca ↓ |
+| 8° | Anto, Impe ↓ |
 
 **Serie B**
 
 | Posto | Squadra |
 |-------|---------|
-| 1° | Gio |
-| 2° | Tommy |
-| 3° | Ste Mora, Teo Lanti |
+| 1° | Gio ↑ |
+| 2° | Tommy ↑ |
+| 3° | Ste Mora, Teo Lanti ↑ |
 | 4° | Vinci |
 | 5° | Nico |
 | 6° | Rouge |
 | 7° | Carlo |
 | 8° | Cri |
+
+**Champions league:** Cri 🏆
 
 ### 2024-2025 — Sedicesimo anno
 
@@ -199,22 +201,24 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 3° | Mino, Giolla |
 | 4° | Trilly |
 | 5° | Zecca |
-| 6° | Vinci |
-| 7° | Gio |
-| 8° | Tommy |
+| 6° | Vinci ↓ |
+| 7° | Gio ↓ |
+| 8° | Tommy ↓ |
 
 **Serie B**
 
 | Posto | Squadra |
 |-------|---------|
-| 1° | Bruno |
-| 2° | Anto, Impe |
-| 3° | Manu |
+| 1° | Bruno ↑ |
+| 2° | Anto, Impe ↑ |
+| 3° | Manu ↑ |
 | 4° | Cri |
 | 5° | Rouge |
 | 6° | Nico |
 | 7° | Carlo |
 | 8° | Ste Mora |
+
+**Champions league:** Pobbi, Tia 🏆
 
 ### 2023-2024 — Quindicesimo anno
 
@@ -227,22 +231,24 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 3° | Charlie |
 | 4° | Vinci |
 | 5° | Pobbi, Tia |
-| 6° | Carlo |
-| 7° | Ste Mora, Ale Lissi |
-| 8° | Anto, Impe |
+| 6° | Carlo ↓ |
+| 7° | Ste Mora, Ale Lissi ↓ |
+| 8° | Anto, Impe ↓ |
 
 **Serie B**
 
 | Posto | Squadra |
 |-------|---------|
-| 1° | Zecca |
-| 2° | Trilly |
-| 3° | Gio |
+| 1° | Zecca ↑ |
+| 2° | Trilly ↑ |
+| 3° | Gio ↑ |
 | 4° | Cri |
 | 5° | Rouge |
 | 6° | Manu |
 | 7° | Bruno |
 | 8° | Nico |
+
+**Champions league:** ?? 🏆
 
 ### 2022-2023 — Quattordicesimo anno
 
@@ -315,6 +321,8 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 1° | Zecca |
 | 2° | Nico, Vinci, Mary |
 | 3° | Carlo |
+
+**Coppa lega unica:** Zecca 🏆
 
 ### 2013-2014 — Quinto anno
 

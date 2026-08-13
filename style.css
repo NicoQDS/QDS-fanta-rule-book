@@ -29,11 +29,6 @@
   --site-color-navbar-links: #FFA733; /* text color of the links inside the navbar menu (#navbar-menu-links) */
   --site-color-navbar-brand: #FFA733; /* text color of the site title link in the navbar (#navbar-brand-link) */
 
-  /* Colors for the "Lega unica" (non-zero) trophy-count badges in the
-     Palmarès table. Edit these to change how those badges look. */
-  --site-badge-lega-unica-bg: #ffc107;   /* fill color */
-  --site-badge-lega-unica-text: #212529; /* text color */
-
   /* Text styling for the site title link in the navbar
      (#navbar-brand-link). Edit these to change how it looks. */
   --site-navbar-brand-font-size: 1.25rem; /* text size */
@@ -43,9 +38,14 @@
      (e.g. "Palmarès", "Serie A", "Serie B", each season year — id
      "#year-2024-2025" and similar). Edit these to change how that
      text looks everywhere at once. */
-  --site-card-label-text-color: #212529; /* text color */
-  --site-card-label-font-size: 1.2rem;  /* text size */
+  --site-card-label-text-color: #2e3337; /* text color */
+  --site-card-label-font-size: 1.1rem;  /* text size */
   --site-card-label-font-weight: 400;    /* text boldness (400 = normal, 700 = bold) */
+  --site-card-label-font-family: inherit; /* font family */
+  --site-card-label-font-style: normal;   /* normal or italic */
+  --site-card-label-line-height: 1.2;     /* space between lines */
+  --site-card-label-letter-spacing: normal; /* space between letters */
+  --site-card-label-text-transform: none; /* none, uppercase, lowercase, capitalize */
 
   /* Padding of the "Albo risultati" title card's body
      (#albo-risultati-title-card-body, on index.html). Edit these to
@@ -105,6 +105,11 @@
   color: var(--site-card-label-text-color);
   font-size: var(--site-card-label-font-size);
   font-weight: var(--site-card-label-font-weight);
+  font-family: var(--site-card-label-font-family);
+  font-style: var(--site-card-label-font-style);
+  line-height: var(--site-card-label-line-height);
+  letter-spacing: var(--site-card-label-letter-spacing);
+  text-transform: var(--site-card-label-text-transform);
 }
 
 a {
@@ -295,6 +300,37 @@ html {
   border-left: 4px solid #dc3545;
 }
 
+/* Champions league / Coppa lega unica winner — an input-group-style
+   pill (icon box joined to a name box), stretching full width like a
+   regular card, with the name box filling all the leftover space.
+   Same gold left border as 1st place in the league lists above;
+   every other color is inherited, not overridden. */
+#albo-risultati [id$="-champions-league"],
+#albo-risultati [id$="-coppa-lega-unica"] {
+  display: flex;
+  align-items: stretch;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-left: 4px solid #ffd700;
+  border-radius: var(--bs-border-radius);
+  overflow: hidden;
+}
+
+#albo-risultati [id$="-champions-league"] .winner-group-icon,
+#albo-risultati [id$="-coppa-lega-unica"] .winner-group-icon {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-right: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+#albo-risultati [id$="-champions-league"] .winner-group-name,
+#albo-risultati [id$="-coppa-lega-unica"] .winner-group-name {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0.375rem 0.75rem;
+}
+
 /* -----------------------------------------------------------------
    Palmarès table — evenly spaced columns
    -------------------------------------------------------------------
@@ -308,9 +344,15 @@ html {
   table-layout: fixed;
 }
 
+#palmares-table thead th {
+  color: var(--site-color-navbar);
+  font-weight: 550;
+}
+
 #palmares-table th,
 #palmares-table td {
-  width: 25%;
+  width: 16.6667%;
+  font-weight: normal;
 
   /* The ".table-bordered" class draws a full grid (horizontal AND
      vertical lines). We only want the horizontal ones, so we zero out
@@ -341,32 +383,22 @@ html {
      surrounding text) — bump it back up to full size so the numbers
      are easier to read at a glance. */
   font-size: 1rem;
+  /* Fixed width so single- and double-digit numbers produce the same
+     pill size instead of the badge shrink-wrapping its content. */
+  display: inline-block;
+  width: 32px;
+  text-align: center;
 }
 
-/* The "0" badges use Bootstrap's ".text-bg-secondary" class, whose
-   default gray fill (#6c757d) reads too dark/heavy for a "nothing
-   won" value. We drop the fill entirely and use a thin gray outline
-   instead, so a "0" reads as empty at a glance. */
-#palmares-table .text-bg-secondary {
-  background-color: #abb0b549 !important;
-  color: var(--site-color-navbar) !important;
+#palmares-table .badge-coppa {
+  background-color: var(--site-color-navbar);
+  color: white;
 }
 
-/* Non-zero "Serie A" / "Serie B" badges get their own custom colors
-   (instead of Bootstrap's ".text-bg-warning") to visually match each
-   league. Navy for Serie A needs light text; the lighter green for
-   Serie B reads better with dark text. */
-#palmares-table .badge-lega-unica {
-  background-color: var(--site-badge-lega-unica-bg);
-  color: var(--site-badge-lega-unica-text);
-}
-
-#palmares-table .badge-serie-a {
-  background-color: #92faf8;
-  color: var(--site-color-navbar);
-}
-
-#palmares-table .badge-serie-b {
-  background-color: #a6ff3a;
+/* TOT column (2nd column, right after "Nome") gets its own color to
+   stand out from the per-competition counts: orange background,
+   white text. */
+#palmares-table td:nth-child(2) .badge-coppa {
+  background-color: #ffd700;
   color: var(--site-color-navbar);
 }
