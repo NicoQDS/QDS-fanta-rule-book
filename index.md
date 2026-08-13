@@ -129,7 +129,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 ### Palmarès
 
-| Nome | TOT | Unico | A | B | Coppa |
+| Nome | Totale | Lega unica | A | B | Coppa |
 |------|:---:|:---:|:---:|:---:|:---:|
 | Pobbi | 4 | 2 | 1 |  | 1 |
 | Carlo | 3 | 3 |  |  |  |
@@ -160,7 +160,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | Teo Lanti |  |  |  |  |  |
 | Trilly |  |  |  |  |  |
 
-### 2025-2026 — Diciassettesimo anno
+### 2025-2026 — 17° anno
 
 **Serie A**
 
@@ -190,7 +190,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 **Champions league:** Cri 🏆
 
-### 2024-2025 — Sedicesimo anno
+### 2024-2025 — 16° anno
 
 **Serie A**
 
@@ -220,7 +220,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 **Champions league:** Pobbi, Tia 🏆
 
-### 2023-2024 — Quindicesimo anno
+### 2023-2024 — 15° anno
 
 **Serie A**
 
@@ -250,7 +250,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 **Champions league:** ?? 🏆
 
-### 2022-2023 — Quattordicesimo anno
+### 2022-2023 — 14° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -258,7 +258,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Ste Mora, Fefe |
 | 3° | Carlo |
 
-### 2021-2022 — Tredicesimo anno
+### 2021-2022 — 13° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -266,7 +266,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | |
 | 3° | Manu, Trilly |
 
-### 2020-2021 — Dodicesimo anno
+### 2020-2021 — 12° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -274,7 +274,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Impe, Toto |
 | 3° | Pobbi, Tommy, Tia |
 
-### 2019-2020 — Undicesimo anno
+### 2019-2020 — 11° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -282,7 +282,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Tommy, Tia, Pobbi |
 | 3° | Mino, Giolla |
 
-### 2018-2019 — Decimo anno
+### 2018-2019 — 10° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -290,7 +290,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Mino, Giolla |
 | 3° | Carlo |
 
-### 2017-2018 — Nono anno
+### 2017-2018 — 9° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -298,7 +298,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Vinci |
 | 3° | Mino, Giolla |
 
-### 2016-2017 — Ottavo anno
+### 2016-2017 — 8° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -306,7 +306,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Gio, Rouge, Bruno |
 | 3° | Tommy, Pobbi |
 
-### 2015-2016 — Settimo anno
+### 2015-2016 — 7° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -314,7 +314,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Nico, Vinci, Mary |
 | 3° | Giolla, Mino |
 
-### 2014-2015 — Sesto anno
+### 2014-2015 — 6° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -324,7 +324,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 
 **Coppa lega unica:** Zecca 🏆
 
-### 2013-2014 — Quinto anno
+### 2013-2014 — 5° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -332,7 +332,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Teo Colo, Cri |
 | 3° | Carlo |
 
-### 2012-2013 — Quarto anno
+### 2012-2013 — 4° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -340,7 +340,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Carlo |
 | 3° | Nico, Vinci, Mary |
 
-### 2011-2012 — Terzo anno
+### 2011-2012 — 3° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -348,7 +348,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | |
 | 3° | |
 
-### 2010-2011 — Secondo anno
+### 2010-2011 — 2° anno
 
 | Posto | Squadra |
 |-------|---------|
@@ -356,7 +356,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 2° | Rey, Gigia, Mary |
 | 3° | Nico, Vinci |
 
-### 2009-2010 — Primo anno
+### 2009-2010 — 1° anno
 
 | Posto | Squadra |
 |-------|---------|

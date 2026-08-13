@@ -321,7 +321,7 @@ html {
   align-items: center;
   padding: 0.375rem 0.75rem;
   border-right: var(--bs-border-width) solid var(--bs-border-color);
-  color: #7b7171;
+  color: var(--site-color-navbar);
 }
 
 #albo-risultati [id$="-champions-league"] .winner-group-name,
@@ -333,13 +333,15 @@ html {
 }
 
 /* -----------------------------------------------------------------
-   Palmarès table — evenly spaced columns
+   Palmarès table — narrow badge columns, "Nome" and "Totale" take
+   the rest
    -------------------------------------------------------------------
-   By default an HTML table sizes each column based on its content
-   (so "Girone unico" would be wider than "Serie A" just because the
-   header text is longer). "table-layout: fixed" makes the browser
-   ignore content width and instead split columns evenly based only
-   on the widths we give them below (25% each, since there are 4).
+   "table-layout: fixed" makes the browser ignore content width and
+   size columns from the widths given below instead. The four
+   single-badge columns ("Lega unica", "A", "B", "Coppa") get just
+   enough fixed width for their pill; "Nome" and "Totale" are left
+   without an explicit width, so — per the fixed-table-layout spec —
+   they equally split whatever horizontal space is left over.
    ------------------------------------------------------------------- */
 #palmares-table {
   table-layout: fixed;
@@ -348,11 +350,18 @@ html {
 #palmares-table thead th {
   color: var(--site-color-navbar);
   font-weight: 550;
+  white-space: nowrap;
+}
+
+/* Clickable sort headers ("Totale", "Lega unica", "A", "B", "Coppa"),
+   wired up in script.js. */
+#palmares-table .palmares-sortable {
+  cursor: pointer;
+  user-select: none;
 }
 
 #palmares-table th,
 #palmares-table td {
-  width: 16.6667%;
   font-weight: normal;
 
   /* The ".table-bordered" class draws a full grid (horizontal AND
@@ -362,6 +371,21 @@ html {
      plain override wins without "!important". */
   border-left-width: 0;
   border-right-width: 0;
+}
+
+#palmares-table th:nth-child(3),
+#palmares-table td:nth-child(3) {
+  /* Wide enough for the "Lega unica" header to stay on one line. */
+  width: 92px;
+}
+
+#palmares-table th:nth-child(4),
+#palmares-table td:nth-child(4),
+#palmares-table th:nth-child(5),
+#palmares-table td:nth-child(5),
+#palmares-table th:nth-child(6),
+#palmares-table td:nth-child(6) {
+  width: 56px;
 }
 
 /* Center the three trophy-count columns (everything but "Nome"), so
