@@ -9,8 +9,8 @@
    write our own click-handling JavaScript to open/close the mobile
    navigation menu. Now that the site uses Bootstrap, that is no
    longer necessary: Bootstrap ships its own JavaScript bundle
-   (loaded in index.html as "bootstrap.bundle.min.js") which already
-   knows how to open/close the menu on its own.
+   (loaded in each HTML page as "bootstrap.bundle.min.js") which
+   already knows how to open/close the menu on its own.
 
    It does this by reading two HTML attributes we put on the
    hamburger button in index.html:
@@ -28,7 +28,7 @@
    ===================================================================== */
 
 /* -----------------------------------------------------------------
-   Palmarès table — click-to-sort headers (index.html only)
+   Palmarès table — click-to-sort headers (scoreboard.html only)
    -------------------------------------------------------------------
    Clicking "Lega unica", "A", "B" or "Coppa" sorts the table by that
    column descending, using "Totale" descending as a tie-breaker.
@@ -41,7 +41,7 @@
    clicking a header gives the same result no matter what was clicked
    before it.
 
-   Each number cell carries a "data-value" attribute (see index.html)
+   Each number cell carries a "data-value" attribute (see scoreboard.html)
    so we can read its value directly, since zero counts are rendered
    as empty cells with no visible "0" text to parse.
    ----------------------------------------------------------------- */
@@ -85,6 +85,29 @@ document.addEventListener("DOMContentLoaded", function () {
         return cellValue(rowB, TOTALE_CELL_INDEX) - cellValue(rowA, TOTALE_CELL_INDEX);
       });
       renderRows(sortedRows);
+    });
+  });
+});
+
+/* -----------------------------------------------------------------
+   Hamburger menu — close on link click (index.html only)
+   -------------------------------------------------------------------
+   Putting "data-bs-toggle=collapse" directly on the menu links would
+   also close the menu, but Bootstrap's collapse data-api always calls
+   preventDefault() on <a> triggers, which would block the browser
+   from actually jumping to the link's "href" target. So instead we
+   let the links navigate normally and just hide the collapse
+   ourselves afterwards.
+   ----------------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", function () {
+  var menu = document.getElementById("navbar-menu");
+  var links = document.getElementById("navbar-menu-links");
+  if (!menu || !links) return;
+
+  links.querySelectorAll(".nav-link").forEach(function (link) {
+    link.addEventListener("click", function () {
+      var collapse = bootstrap.Collapse.getOrCreateInstance(menu);
+      collapse.hide();
     });
   });
 });

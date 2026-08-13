@@ -358,6 +358,19 @@ html {
   scroll-margin-top: 3.75rem;
 }
 
+/* The hamburger menu links target individual cards (not whole
+   sections), so those cards need the same scroll offset too. */
+#girone-champions-card,
+#premi-promozione-retrocessione-card,
+#modalita-lega-card,
+#svolgimento-asta-card,
+#rinvii-partite-card,
+#formazioni-non-schierate-card,
+#metodo-osnaghi-top-card,
+#impostazioni-lega-card {
+  scroll-margin-top: 3.75rem;
+}
+
 #girone-doppio {
   /* Without this, the section's own "mb-5" (3rem) collapses with
      #modalita-lega-card's "mb-4" (1.5rem) and wins, so the gap before

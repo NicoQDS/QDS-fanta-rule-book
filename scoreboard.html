@@ -1,0 +1,1206 @@
+<!doctype html>
+<!--
+  scoreboard.html — "Albo risultati" page
+  =======================================================================
+  This site is split across TWO separate HTML pages that both share
+  the same footer, and a similar but intentionally different navbar
+  (copy-pasted into each file, since this is a plain static site with
+  no templating system):
+
+    - index.html      → "Regolamento" (the site's home/landing page):
+                      storico revisioni (collapsed by default, at the
+                      top), girone doppio, impostazioni Mantra, rinvii
+                      partite, formazioni non schierate, Metodo Osnaghi
+    - scoreboard.html → "Albo risultati" (THIS page): Palmarès summary
+                      table and one card per past season
+
+  Styling comes from the Bootstrap CSS framework (loaded from a CDN
+  link below, so there is nothing to install). Bootstrap is free and
+  open source (MIT license): https://getbootstrap.com
+
+  Any small custom styling on top of Bootstrap lives in style.css
+  (shared by both pages). The only JavaScript (in script.js, also
+  shared) is explained there — Bootstrap's own bundled JS already
+  handles the mobile navigation menu, so we barely need any custom
+  code any more.
+
+  Every meaningful element below has a unique "id" attribute, so it is
+  easy to find in the browser dev tools or to link to directly.
+  =======================================================================
+-->
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Albo risultati — Fantacalcio QDS</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================================================================
+       NAVBAR
+       ---------------------------------------------------------------
+       Bootstrap's navbar component. "fixed-top" pins it to the top of
+       the screen so it is always visible while scrolling (we
+       compensate for this with padding-top on <body> in style.css).
+       There is deliberately NO "navbar-expand-*" class here: adding
+       one (e.g. "navbar-expand-lg") would show the links inline once
+       the screen gets wide enough. Without it, Bootstrap keeps the
+       menu collapsed behind the hamburger button at EVERY screen
+       width, desktop included — which is what we want everywhere.
+
+       Unlike the rest of the site, the navbar is intentionally
+       DIFFERENT on each page: this page (scoreboard.html) only has
+       the site title and a book-icon button ("navbar-ruleset-button")
+       that opens index.html — there is no hamburger toggler or menu
+       here. index.html's navbar instead has a trophy-icon button
+       that opens scoreboard.html plus the hamburger menu with links
+       to every section of index.html (see that file for the full
+       explanation of its navbar).
+       =================================================================== -->
+    <nav id="main-navbar" class="navbar navbar-dark bg-primary fixed-top">
+      <div id="navbar-container" class="container-fluid">
+        <a id="navbar-brand-link" class="navbar-brand fw-bold" href="index.html"
+          >Fantacalcio QDS</a
+        >
+
+        <a
+          id="navbar-ruleset-button"
+          class="btn btn-outline-light"
+          href="index.html"
+          aria-label="Regolamento"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-book-half"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"
+            />
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <div id="page-container" class="container">
+      <section id="albo-risultati" class="mb-5 rulebook-section">
+        <div id="albo-risultati-title-card" class="card mb-3">
+          <div id="albo-risultati-title-card-body" class="card-body">
+            <h2 id="albo-risultati-title-text" class="mb-0">Albo risultati</h2>
+          </div>
+        </div>
+        <!-- Palmarès -->
+        <h3 id="palmares" class="h5 mb-2 card-label">Palmarès</h3>
+        <div id="palmares-card" class="card mb-4">
+          <div class="card-body">
+            <div id="palmares-table-container" class="table-responsive">
+              <table
+                id="palmares-table"
+                class="table table-bordered table-sm mb-0"
+              >
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th id="palmares-th-totale" class="palmares-sortable">
+                      Totale
+                    </th>
+                    <th id="palmares-th-lega-unica" class="palmares-sortable">
+                      Unico
+                    </th>
+                    <th id="palmares-th-a" class="palmares-sortable">A</th>
+                    <th id="palmares-th-b" class="palmares-sortable">B</th>
+                    <th id="palmares-th-coppa" class="palmares-sortable">
+                      Coppa
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Pobbi</td>
+                    <td data-value="4">
+                      <span class="badge rounded-pill badge-coppa">4</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Carlo</td>
+                    <td data-value="3">
+                      <span class="badge rounded-pill badge-coppa">3</span>
+                    </td>
+                    <td data-value="3">
+                      <span class="badge rounded-pill badge-coppa">3</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Giolla</td>
+                    <td data-value="3">
+                      <span class="badge rounded-pill badge-coppa">3</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Mino</td>
+                    <td data-value="3">
+                      <span class="badge rounded-pill badge-coppa">3</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Zecca</td>
+                    <td data-value="3">
+                      <span class="badge rounded-pill badge-coppa">3</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Nico</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Tommy</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Vinci</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Charlie</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Gio</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Tia</td>
+                    <td data-value="2">
+                      <span class="badge rounded-pill badge-coppa">2</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fefe</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Impe</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Ste Mora</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Toto</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Bruno</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Cri</td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="1">
+                      <span class="badge rounded-pill badge-coppa">1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ale Lissi</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Anto</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Confa</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Gigia</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Manu</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Rey</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Rouge</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Teo Colo</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Teo Lanti</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                  <tr>
+                    <td>Trilly</td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                    <td data-value="0"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Each past season gets its own card with a unique id, so you
+           can link straight to e.g. "albo-risultati.html#year-2016-2017".
+           Years with a "girone unico" (no Serie A/Serie B split) only
+           have one table inside the card; years with the split have
+           two, stacked one above the other (single column layout). -->
+
+        <h3 id="year-2025-2026" class="h5 mb-2 card-label">
+          2025-2026 — 17° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="h6">Serie A</h3>
+                <div class="card">
+                  <ol
+                    id="year-2025-2026-serie-a-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item">Charlie</li>
+                    <li class="list-group-item">Mino, Giolla</li>
+                    <li class="list-group-item">Pobbi, Tia</li>
+                    <li class="list-group-item">Manu</li>
+                    <li class="list-group-item">Trilly</li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Bruno<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Zecca<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Anto, Impe<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="col-6">
+                <h3 class="h6">Serie B</h3>
+                <div class="card">
+                  <ol
+                    id="year-2025-2026-serie-b-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item d-flex align-items-center">
+                      Gio<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Tommy<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Ste Mora, Teo Lanti<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item">Vinci</li>
+                    <li class="list-group-item">Nico</li>
+                    <li class="list-group-item">Rouge</li>
+                    <li class="list-group-item">Carlo</li>
+                    <li class="list-group-item">Cri</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <h3 class="h6 mt-3">Champions league</h3>
+            <div id="year-2025-2026-champions-league" class="winner-group">
+              <span class="winner-group-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trophy"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"
+                  />
+                </svg>
+              </span>
+              <span class="winner-group-name">Cri</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2024-2025" class="h5 mb-2 card-label">
+          2024-2025 — 16° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="h6">Serie A</h3>
+                <div class="card">
+                  <ol
+                    id="year-2024-2025-serie-a-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item">Pobbi, Tia</li>
+                    <li class="list-group-item">Charlie</li>
+                    <li class="list-group-item">Mino, Giolla</li>
+                    <li class="list-group-item">Trilly</li>
+                    <li class="list-group-item">Zecca</li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Vinci<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Gio<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Tommy<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="col-6">
+                <h3 class="h6">Serie B</h3>
+                <div class="card">
+                  <ol
+                    id="year-2024-2025-serie-b-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item d-flex align-items-center">
+                      Bruno<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Anto, Impe<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Manu<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item">Cri</li>
+                    <li class="list-group-item">Rouge</li>
+                    <li class="list-group-item">Nico</li>
+                    <li class="list-group-item">Carlo</li>
+                    <li class="list-group-item">Ste Mora</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <h3 class="h6 mt-3">Champions league</h3>
+            <div id="year-2024-2025-champions-league" class="winner-group">
+              <span class="winner-group-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trophy"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"
+                  />
+                </svg>
+              </span>
+              <span class="winner-group-name">Pobbi, Tia</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2023-2024" class="h5 mb-2 card-label">
+          2023-2024 — 15° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <h3 class="h6">Serie A</h3>
+                <div class="card">
+                  <ol
+                    id="year-2023-2024-serie-a-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item">Mino, Giolla</li>
+                    <li class="list-group-item">Tommy</li>
+                    <li class="list-group-item">Charlie</li>
+                    <li class="list-group-item">Vinci</li>
+                    <li class="list-group-item">Pobbi, Tia</li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Carlo<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Ste Mora, Ale Lissi<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Anto, Impe<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                        />
+                      </svg>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="col-6">
+                <h3 class="h6">Serie B</h3>
+                <div class="card">
+                  <ol
+                    id="year-2023-2024-serie-b-table"
+                    class="list-group list-group-numbered list-group-flush"
+                  >
+                    <li class="list-group-item d-flex align-items-center">
+                      Zecca<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Trilly<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                      Gio<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-up-circle ms-auto"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
+                        />
+                      </svg>
+                    </li>
+                    <li class="list-group-item">Cri</li>
+                    <li class="list-group-item">Rouge</li>
+                    <li class="list-group-item">Manu</li>
+                    <li class="list-group-item">Bruno</li>
+                    <li class="list-group-item">Nico</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <h3 class="h6 mt-3">Champions league</h3>
+            <div id="year-2023-2024-champions-league" class="winner-group">
+              <span class="winner-group-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trophy"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"
+                  />
+                </svg>
+              </span>
+              <span class="winner-group-name"></span>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2022-2023" class="h5 mb-2 card-label">
+          2022-2023 — 14° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2022-2023-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Impe, Toto</li>
+                <li class="list-group-item">Ste Mora, Fefe</li>
+                <li class="list-group-item">Carlo</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2021-2022" class="h5 mb-2 card-label">
+          2021-2022 — 13° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2021-2022-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Mino, Giolla</li>
+                <li class="list-group-item"></li>
+                <li class="list-group-item">Manu, Trilly</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2020-2021" class="h5 mb-2 card-label">
+          2020-2021 — 12° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2020-2021-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Vinci</li>
+                <li class="list-group-item">Impe, Toto</li>
+                <li class="list-group-item">Pobbi, Tommy, Tia</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2019-2020" class="h5 mb-2 card-label">
+          2019-2020 — 11° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2019-2020-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Ste Mora, Fefe</li>
+                <li class="list-group-item">Tommy, Tia, Pobbi</li>
+                <li class="list-group-item">Mino, Giolla</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2018-2019" class="h5 mb-2 card-label">
+          2018-2019 — 10° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2018-2019-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Pobbi, Tommy</li>
+                <li class="list-group-item">Mino, Giolla</li>
+                <li class="list-group-item">Carlo</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2017-2018" class="h5 mb-2 card-label">
+          2017-2018 — 9° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2017-2018-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Carlo</li>
+                <li class="list-group-item">Vinci</li>
+                <li class="list-group-item">Mino, Giolla</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2016-2017" class="h5 mb-2 card-label">
+          2016-2017 — 8° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2016-2017-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Charlie</li>
+                <li class="list-group-item">Gio, Rouge, Bruno</li>
+                <li class="list-group-item">Tommy, Pobbi</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2015-2016" class="h5 mb-2 card-label">
+          2015-2016 — 7° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2015-2016-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Tommy, Pobbi</li>
+                <li class="list-group-item">Nico, Vinci, Mary</li>
+                <li class="list-group-item">Giolla, Mino</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2014-2015" class="h5 mb-2 card-label">
+          2014-2015 — 6° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2014-2015-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Zecca</li>
+                <li class="list-group-item">Nico, Vinci, Mary</li>
+                <li class="list-group-item">Carlo</li>
+              </ol>
+            </div>
+            <h3 class="h6 mt-3">Coppa lega unica</h3>
+            <div id="year-2014-2015-coppa-lega-unica" class="winner-group">
+              <span class="winner-group-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trophy"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"
+                  />
+                </svg>
+              </span>
+              <span class="winner-group-name">Zecca</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2013-2014" class="h5 mb-2 card-label">
+          2013-2014 — 5° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2013-2014-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Nico, Vinci, Mary</li>
+                <li class="list-group-item">Teo Colo, Cri</li>
+                <li class="list-group-item">Carlo</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2012-2013" class="h5 mb-2 card-label">
+          2012-2013 — 4° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2012-2013-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Giolla, Mino</li>
+                <li class="list-group-item">Carlo</li>
+                <li class="list-group-item">Nico, Vinci, Mary</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2011-2012" class="h5 mb-2 card-label">
+          2011-2012 — 3° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2011-2012-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Carlo</li>
+                <li class="list-group-item"></li>
+                <li class="list-group-item"></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2010-2011" class="h5 mb-2 card-label">
+          2010-2011 — 2° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2010-2011-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Carlo</li>
+                <li class="list-group-item">Rey, Gigia, Mary</li>
+                <li class="list-group-item">Nico, Vinci</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="year-2009-2010" class="h5 mb-2 card-label">
+          2009-2010 — 1° anno
+        </h3>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="card">
+              <ol
+                id="year-2009-2010-results-table"
+                class="list-group list-group-numbered list-group-flush"
+              >
+                <li class="list-group-item">Nico, Gio</li>
+                <li class="list-group-item">Carlo, Cri</li>
+                <li class="list-group-item">Confa, Teo Colo</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+    <footer id="main-footer" class="bg-dark text-light text-center py-4">
+      <p id="footer-text" class="mb-0">
+        Albo risultati Fantacalcio QDS — Rev06 — 13/08/2026
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

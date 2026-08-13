@@ -10,15 +10,15 @@
   - The live website (Bootstrap-based, unique `id` attributes on
     elements) is split across two HTML pages sharing one footer
     (copy-pasted into each file — there is no templating):
-    - `index.html` — "Albo risultati" (also the site's home page).
-      Navbar: site title + a book-icon button opening `ruleset.htm`
-      only — no hamburger toggler or menu.
-    - `ruleset.htm` — "Regolamento" (storico revisioni, collapsed by
-      default at the top of the page; girone doppio, impostazioni
-      Mantra, rinvii partite, formazioni non schierate, Metodo
-      Osnaghi). Navbar: site title + a trophy-icon button opening
-      `index.html` + the hamburger toggler/menu with links to every
-      section of this page.
+    - `index.html` — "Regolamento" (also the site's home/landing
+      page). Storico revisioni, collapsed by default at the top of
+      the page; girone doppio, impostazioni Mantra, rinvii partite,
+      formazioni non schierate, Metodo Osnaghi. Navbar: site title +
+      a trophy-icon button opening `scoreboard.html` + the hamburger
+      toggler/menu with links to every section of this page.
+    - `scoreboard.html` — "Albo risultati". Navbar: site title + a
+      book-icon button opening `index.html` only — no hamburger
+      toggler or menu.
   - The navbar is intentionally DIFFERENT per page (see above) — when
     editing it, do not force the two files to match. The footer must
     still stay identical on both.
