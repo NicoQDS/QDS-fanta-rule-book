@@ -232,6 +232,18 @@ a {
      makes this more specific than Bootstrap's own ".nav-link" rule, so
      it wins without needing "!important". */
   color: var(--site-color-navbar-links);
+  text-transform: uppercase;
+}
+
+#navbar-menu-links .dropdown-divider {
+  /* Bootstrap's ".dropdown-divider" colors itself via the CSS variable
+     "--bs-dropdown-divider-bg", which Bootstrap only defines inside
+     ".dropdown-menu" elements. Our <hr> isn't inside one, so that
+     variable is undefined here, which makes Bootstrap's whole
+     "border-top: 1px solid var(...)" declaration invalid and drops
+     the border entirely — setting "border-color" alone can't fix
+     that, we need to set the full border-top again ourselves. */
+  border-top: 1px solid white;
 }
 
 #navbar-brand-link {
