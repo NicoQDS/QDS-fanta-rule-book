@@ -130,7 +130,7 @@
               <a
                 id="nav-link-mantra-settings"
                 class="nav-link"
-                href="ruleset.htm#mantra-settings"
+                href="ruleset.htm#impostazioni-lega-section"
                 >Impostazioni Mantra</a
               >
             </li>
@@ -327,6 +327,16 @@
                         </ul>
                       </td>
                     </tr>
+                    <tr id="rev-row-06">
+                      <td>06</td>
+                      <td>13/08/2026</td>
+                      <td>
+                        <ul class="mb-0">
+                          <li>Modalità lega non modificabile per tre anni.</li>
+                          <li>Aggiunta singola chiamata buste chiuse</li>
+                        </ul>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -339,11 +349,14 @@
          1. FORMULA A GIRONE DOPPIO
          =============================================================== -->
       <section id="girone-doppio" class="mb-5 rulebook-section">
-        <div class="card mb-4">
-          <div class="card-header rulebook-card-header">
-            <h2 class="mb-0">Struttura gironi e Champions league</h2>
+        <div id="girone-champions-card" class="card mb-4">
+          <div
+            id="girone-champions-card-header"
+            class="card-header rulebook-card-header"
+          >
+            <h2 class="mb-0">Gironi e Champions league</h2>
           </div>
-          <div class="card-body">
+          <div id="girone-champions-info" class="card-body">
             <h3 id="struttura-gironi" class="h4 mb-3 girone-subsection-heading">
               Serie A e Serie B
             </h3>
@@ -377,12 +390,15 @@
         </div>
 
         <div id="premi-promozione-retrocessione-card" class="card mb-4">
-          <div class="card-header rulebook-card-header">
+          <div
+            id="premi-promozione-retrocessione-card-header"
+            class="card-header rulebook-card-header"
+          >
             <h2 id="premi-promozione-retrocessione" class="mb-0">
               Iscrizione e Premi
             </h2>
           </div>
-          <div class="card-body">
+          <div id="premi-promozione-retrocessione-info" class="card-body">
             <h3 id="quota-iscrizione" class="h4 mb-3 girone-subsection-heading">
               Quota di iscrizione
             </h3>
@@ -414,7 +430,7 @@
                 <h3 id="serie-a-prizes-card" class="h5 mb-2 card-label">
                   Serie A
                 </h3>
-                <div class="card mb-3">
+                <div id="serie-a-prizes-list-card" class="card mb-3">
                   <ul
                     id="serie-a-prizes-list"
                     class="list-group list-group-flush"
@@ -443,7 +459,7 @@
                 <h3 id="serie-b-prizes-card" class="h5 mb-2 card-label">
                   Serie B
                 </h3>
-                <div class="card mb-3">
+                <div id="serie-b-prizes-list-card" class="card mb-3">
                   <ul
                     id="serie-b-prizes-list"
                     class="list-group list-group-flush"
@@ -484,7 +500,12 @@
                   </ul>
                 </div>
 
-                <h3 class="h5 mb-2 card-label">Champions league</h3>
+                <h3
+                  id="premi-champions-league-heading"
+                  class="h5 mb-2 card-label"
+                >
+                  Champions league
+                </h3>
                 <div
                   id="premi-champions-league-prize"
                   class="winner-group mb-3"
@@ -504,9 +525,102 @@
                     </svg>
                   </span>
                   <span class="winner-group-name"
-                    >50 € + eventuali multe (da formazioni non schierate)</span
+                    >50 € + multe formazioni non schierate</span
                   >
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="modalita-lega-card" class="card mb-4">
+          <div
+            id="modalita-lega-card-header"
+            class="card-header rulebook-card-header"
+          >
+            <h2 class="mb-0">Modalità Lega</h2>
+          </div>
+          <div id="modalita-lega-card-body" class="card-body">
+            <div id="modalita-lega-info-card" class="card mb-3">
+              <div id="modalita-lega-info" class="card-body">
+                <p class="mb-2">
+                  Modalità: Mantra (ultima votazione 2025/2026)
+                </p>
+                <div id="modalita-lega-rev-info" class="winner-group">
+                  <span class="winner-group-icon">Rev06</span>
+                  <span class="winner-group-name"
+                    >Non modificabile per 3 anni</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="svolgimento-asta-card" class="card mb-4">
+          <div
+            id="svolgimento-asta-card-header"
+            class="card-header rulebook-card-header"
+          >
+            <h2 id="svolgimento-asta-title" class="mb-0">Svolgimento asta</h2>
+          </div>
+          <div id="svolgimento-asta-info" class="card-body">
+            <h3 id="tipologia-asta" class="h4 mb-3 girone-subsection-heading">
+              Tipologia asta
+            </h3>
+            <div id="tipologia-asta-card" class="card mb-4">
+              <div id="tipologia-asta-info" class="card-body">
+                <p class="mb-0">
+                  Asta classica a rialzo<br />
+                  Minima chiamata = 1 fM<br />
+                  Rialzo minimo = 1 fM
+                </p>
+              </div>
+            </div>
+
+            <h3 id="buste-chiuse" class="h4 mb-3 girone-subsection-heading">
+              Buste chiuse
+            </h3>
+            <div id="buste-chiuse-card" class="winner-group">
+              <span class="winner-group-icon">Rev06</span>
+              <div id="buste-chiuse-info" class="winner-group-name">
+                <p class="mb-0">
+                  Ogni squadra può chiamare un solo giocatore in tutta l'asta
+                  (attaccanti esclusi, cioè nessun giocatore con ruolo rosso in
+                  caso di Mantra) tra quelli che deve chiamare lui chiedendo che
+                  l'asta sia fatta col metodo busta chiusa. Una volta chiamato
+                  il giocatore ogni squadra scriverà su un bigliettino il
+                  proprio nome e il prezzo che vuole offrire per quel giocatore.
+                  Allo scadere di un conteggio di 3 minuti il bigliettino sarà
+                  ripiegato e consegnato alla squadra alla sua sinistra (se
+                  presente un battitore d'asta saranno consegnati a lui i
+                  bigliettini). Una volta consegnati verranno lette le cifre sul
+                  bigliettino e quella più alta si aggiudica il giocatore.
+                </p>
+                <p>
+                  In caso di pari merito la procedura verrà ripetuta solo per
+                  quelle squadre che hanno scritto la cifra più alta a pari
+                  merito e che dovranno rioffrire una cifra obbligatoriamente
+                  maggiore a quella scritta precedentemente fino a che una delle
+                  squadre non avrà la meglio.
+                </p>
+                <p>
+                  Una squadra può rifiutarsi di partecipare ad un'asta a busta
+                  chiusa, ma solo se il rifiuto viene espresso all'inizio: dopo
+                  la prima offerta non è più possibile ritirarsi. Se una squadra
+                  scrive una cifra fuori dal suo budget disponibile la sua
+                  offerta è da considerarsi nulla.
+                </p>
+                <p class="mb-0">
+                  Se due squadre, contendendosi un giocatore, sono entrambe
+                  obbligate a partecipare a un'offerta successiva all'ultima
+                  finita in parità ma non possono aumentare la cifra precedente
+                  senza andare fuori budget, l'asta è da considerarsi annullata
+                  e si ricomincia a chiamare il giocatore da 1 con asta
+                  classica; la squadra che ha chiamato il giocatore in busta
+                  chiusa ha comunque esaurito il suo slot per la chiamata in
+                  busta chiusa.
+                </p>
               </div>
             </div>
           </div>
@@ -517,98 +631,26 @@
          2. REGOLAMENTO FANTACALCIO MANTRA
          =============================================================== -->
       <section id="mantra-settings" class="mb-5 rulebook-section">
-        <div class="card mb-4">
-          <div class="card-header rulebook-card-header">
-            <h2 class="mb-0">2. Regolamento Fantacalcio Mantra</h2>
+        <div id="rinvii-partite-card" class="card mb-4">
+          <div
+            id="rinvii-partite-card-header"
+            class="card-header rulebook-card-header"
+          >
+            <h2 id="rinvii-partite" class="mb-0">Rinvii partite</h2>
           </div>
-          <div class="card-body">
-            <h3 id="impostazioni-lega" class="h4 mb-3">Impostazioni Lega</h3>
-
-            <!-- Each screenshot is its own card: the image sits in
-           "card-img-top" (the standard Bootstrap slot for an image
-           that spans the full width of the top of a card) and the
-           caption sits below it in "card-body" as "card-text". This is
-           exactly the kind of "picture + short caption" content a
-           Bootstrap card is designed for. -->
-            <div id="settings-tipo-crediti-card" class="card mb-3">
-              <img
-                id="settings-tipo-crediti-image"
-                class="card-img-top settings-screenshot"
-                src="assets/images/settings-tipo-crediti.png"
-                alt="Tipo lega, disponibilità calciatori e crediti iniziali"
-              />
-              <div class="card-body">
-                <p class="card-text text-center mb-0">
-                  Tipo lega, disponibilità calciatori e crediti iniziali
-                </p>
-              </div>
-            </div>
-
-            <div id="settings-rosa-panchina-card" class="card mb-3">
-              <img
-                id="settings-rosa-panchina-image"
-                class="card-img-top settings-screenshot"
-                src="assets/images/settings-rosa-panchina.png"
-                alt="Configurazione rosa e panchina"
-              />
-              <div class="card-body">
-                <p class="card-text text-center mb-0">
-                  Configurazione rosa e panchina
-                </p>
-              </div>
-            </div>
-
-            <div id="settings-sostituzioni-card" class="card mb-3">
-              <img
-                id="settings-sostituzioni-image"
-                class="card-img-top settings-screenshot"
-                src="assets/images/settings-sostituzioni.jpeg"
-                alt="Numero e tipo sostituzioni"
-              />
-              <div class="card-body">
-                <p class="card-text text-center mb-0">
-                  Numero e tipo sostituzioni
-                </p>
-              </div>
-            </div>
-
-            <div id="settings-soglie-gol-card" class="card mb-3">
-              <img
-                id="settings-soglie-gol-image"
-                class="card-img-top settings-screenshot"
-                src="assets/images/settings-soglie-gol.png"
-                alt="Soglie gol"
-              />
-              <div class="card-body">
-                <p class="card-text text-center mb-0">Soglie gol</p>
-              </div>
-            </div>
-
-            <div id="settings-bonus-malus-card" class="card mb-4">
-              <img
-                id="settings-bonus-malus-image"
-                class="card-img-top settings-screenshot"
-                src="assets/images/settings-bonus-malus.png"
-                alt="Tabella bonus/malus"
-              />
-              <div class="card-body">
-                <p class="card-text text-center mb-0">Tabella bonus/malus</p>
-              </div>
-            </div>
-
-            <!-- Rinvii partite (kept as its own anchor target since the
-           navbar links directly to it). -->
-            <h3 id="rinvii-partite" class="h4 mb-3 rulebook-section">
-              Rinvii partite
+          <div id="rinvii-partite-info" class="card-body">
+            <h3
+              id="rinvii-partite-lt-3-heading"
+              class="h4 mb-3 girone-subsection-heading"
+            >
+              Partite rinviate &lt; 3.
             </h3>
-
             <div id="rinvii-partite-lt-3-card" class="card mb-3">
-              <div class="card-body">
+              <div id="rinvii-partite-lt-3-info" class="card-body">
                 <p>
-                  <strong>Partite rinviate &lt; 3.</strong> Regola standard
-                  della lega: se le partite rinviate vengono recuperate oltre
-                  l'inizio del turno successivo si procederà ad assegnare 6
-                  politico.
+                  Regola standard della lega: se le partite rinviate vengono
+                  recuperate oltre l'inizio del turno successivo si procederà ad
+                  assegnare 6 politico.
                 </p>
                 <img
                   id="rinvii-partite-nota-image"
@@ -616,20 +658,21 @@
                   src="assets/images/rinvii-partite-nota.jpeg"
                   alt="Nota su partite nel lasso di tempo tra un turno e il successivo"
                 />
-                <p class="text-center text-muted mt-2 mb-0">
-                  Nota su partite nel lasso di tempo tra un turno e il
-                  successivo
-                </p>
               </div>
             </div>
 
+            <h3
+              id="rinvii-partite-gte-3-heading"
+              class="h4 mb-3 girone-subsection-heading"
+            >
+              Partite rinviate &ge; 3.
+            </h3>
             <div id="rinvii-partite-gte-3-card" class="card">
-              <div class="card-body">
+              <div id="rinvii-partite-gte-3-info" class="card-body">
                 <p class="mb-0">
-                  <strong>Partite rinviate ≥ 3.</strong> Si aspetterà che
-                  vengano regolarmente disputate "congelando" i voti fino al
-                  recupero delle partite stesse e calcolando al termine
-                  dell'ultimo recupero.
+                  Si aspetterà che vengano regolarmente disputate "congelando" i
+                  voti fino al recupero delle partite stesse e calcolando al
+                  termine dell'ultimo recupero.
                 </p>
               </div>
             </div>
@@ -642,7 +685,10 @@
          =============================================================== -->
       <section id="formazioni-non-schierate" class="mb-5 rulebook-section">
         <div id="formazioni-non-schierate-card" class="card mb-4">
-          <div class="card-header rulebook-card-header">
+          <div
+            id="formazioni-non-schierate-card-header"
+            class="card-header rulebook-card-header"
+          >
             <h2 class="mb-0">3. Regolamento formazioni non schierate</h2>
           </div>
           <div id="formazioni-non-schierate-content" class="card-body">
@@ -680,11 +726,14 @@
          4. METODO OSNAGHI PER L'ASTA DI RIPARAZIONE
          =============================================================== -->
       <section id="metodo-osnaghi" class="mb-5 rulebook-section">
-        <div class="card mb-4">
-          <div class="card-header rulebook-card-header">
+        <div id="metodo-osnaghi-top-card" class="card mb-4">
+          <div
+            id="metodo-osnaghi-card-header"
+            class="card-header rulebook-card-header"
+          >
             <h2 class="mb-0">4. Metodo Osnaghi per l'asta di riparazione</h2>
           </div>
-          <div class="card-body">
+          <div id="metodo-osnaghi-top-info" class="card-body">
             <div id="metodo-osnaghi-card" class="card mb-4">
               <div id="metodo-osnaghi-content" class="card-body">
                 <p>
@@ -730,7 +779,7 @@
             </h4>
 
             <div id="esempio-lautaro-card" class="card mb-3">
-              <div class="card-body">
+              <div id="esempio-lautaro-info" class="card-body">
                 <p id="esempio-lautaro" class="mb-0">
                   Lautaro viene acquistato per 120 crediti a settembre quando
                   sul sito ha una Quotazione Iniziale Mantra di 40; purtroppo a
@@ -744,7 +793,7 @@
             </div>
 
             <div id="esempio-romano-card" class="card mb-4">
-              <div class="card-body">
+              <div id="esempio-romano-info" class="card-body">
                 <p id="esempio-romano" class="mb-0">
                   Romano Floriani Mussolini viene pagato 1 a settembre quando
                   sul sito ha Quotazione Iniziale Mantra pari a 3: le sue
@@ -765,6 +814,93 @@
           </div>
         </div>
       </section>
+
+      <!-- =================================================================
+         IMPOSTAZIONI LEGA (moved here, at the very end of the page)
+         =============================================================== -->
+      <section id="impostazioni-lega-section" class="mb-5 rulebook-section">
+        <div id="impostazioni-lega-card" class="card mb-4">
+          <div
+            id="impostazioni-lega-card-header"
+            class="card-header rulebook-card-header"
+          >
+            <h2 class="mb-0">Impostazioni Lega</h2>
+          </div>
+          <div id="impostazioni-lega-info" class="card-body">
+            <!-- Each screenshot is its own card: the image sits in
+           "card-img-top" (the standard Bootstrap slot for an image
+           that spans the full width of the top of a card) and the
+           caption sits below it in "card-body" as "card-text". This is
+           exactly the kind of "picture + short caption" content a
+           Bootstrap card is designed for. -->
+            <div id="settings-tipo-crediti-card" class="card mb-3">
+              <img
+                id="settings-tipo-crediti-image"
+                class="card-img-top settings-screenshot"
+                src="assets/images/settings-tipo-crediti.png"
+                alt="Tipo lega, disponibilità calciatori e crediti iniziali"
+              />
+              <div id="settings-tipo-crediti-info" class="card-body">
+                <p class="card-text text-center mb-0">
+                  Tipo lega, disponibilità calciatori e crediti iniziali
+                </p>
+              </div>
+            </div>
+
+            <div id="settings-rosa-panchina-card" class="card mb-3">
+              <img
+                id="settings-rosa-panchina-image"
+                class="card-img-top settings-screenshot"
+                src="assets/images/settings-rosa-panchina.png"
+                alt="Configurazione rosa e panchina"
+              />
+              <div id="settings-rosa-panchina-info" class="card-body">
+                <p class="card-text text-center mb-0">
+                  Configurazione rosa e panchina
+                </p>
+              </div>
+            </div>
+
+            <div id="settings-sostituzioni-card" class="card mb-3">
+              <img
+                id="settings-sostituzioni-image"
+                class="card-img-top settings-screenshot"
+                src="assets/images/settings-sostituzioni.jpeg"
+                alt="Numero e tipo sostituzioni"
+              />
+              <div id="settings-sostituzioni-info" class="card-body">
+                <p class="card-text text-center mb-0">
+                  Numero e tipo sostituzioni
+                </p>
+              </div>
+            </div>
+
+            <div id="settings-soglie-gol-card" class="card mb-3">
+              <img
+                id="settings-soglie-gol-image"
+                class="card-img-top settings-screenshot"
+                src="assets/images/settings-soglie-gol.png"
+                alt="Soglie gol"
+              />
+              <div id="settings-soglie-gol-info" class="card-body">
+                <p class="card-text text-center mb-0">Soglie gol</p>
+              </div>
+            </div>
+
+            <div id="settings-bonus-malus-card" class="card mb-4">
+              <img
+                id="settings-bonus-malus-image"
+                class="card-img-top settings-screenshot"
+                src="assets/images/settings-bonus-malus.png"
+                alt="Tabella bonus/malus"
+              />
+              <div id="settings-bonus-malus-info" class="card-body">
+                <p class="card-text text-center mb-0">Tabella bonus/malus</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- ===================================================================
@@ -774,7 +910,7 @@
        =================================================================== -->
     <footer id="main-footer" class="bg-dark text-light text-center py-4">
       <p id="footer-text" class="mb-0">
-        Regolamento Fantacalcio QDS — Rev05 — 02/09/2025
+        Regolamento Fantacalcio QDS — Rev06 — 13/08/2026
       </p>
     </footer>
 

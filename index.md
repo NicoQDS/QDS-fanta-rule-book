@@ -1,6 +1,6 @@
 # Regolamento Fantacalcio
 
-**Rev05 — 02/09/2025**
+**Rev06 — 13/08/2026**
 
 ## Storico revisioni
 
@@ -12,33 +12,36 @@
 | 03 | 29/11/2024 | <ul><li>Aggiunta regola formazioni non schierate</li></ul> |
 | 04 | 31/07/2025 | <ul><li>Fantacalcio Mantra – Nuovo Regolamento e impostazioni</li></ul> |
 | 05 | 02/09/2025 | Cambiamenti a seguito delle votazioni in data 29/08: <ul><li>Crediti Iniziali da 300 a 500;</li><li>Malus Rigore Sbagliato da -3 a -2;</li><li>Bonus Rigore Segnato da +3 a +2;</li><li>Introduzione Metodo Osnaghi per calcolo valore dei giocatori per l'asta di riparazione;</li><li>Soglie Gol da 4 invece che da 5.</li></ul> |
+| 06 | 13/08/2026 | <ul><li>Modalità lega non modificabile per tre anni.</li><li>Aggiunta singola chiamata buste chiuse</li></ul> |
 
 ## Struttura gironi e Champions league
 
-### Struttura gironi
+### Serie A e Serie B
 
 Due gironi da otto squadre, Serie A e Serie B.<br>
-**Retrocessione:** Ultime tre posizione Serie A<br>
-**Promozione:** Prime tre posizione Serie B
+Promozione: Prime tre posizione Serie B<br>
+Retrocessione: Ultime tre posizione Serie A
 
-### Coppa
+### Champions league
 
 La calendarizzazione della coppa verrà effettuata in fase di creazione dei gironi.
 
 La coppa prevede partite tra tutte le squadre indipendentemente dall'appartenenza alla Serie A o Serie B.
 
-## Distribuzione quote vincitori
+## Iscrizione e Premi
 
-Quota di iscrizione
+### Quota di iscrizione
 
-- **Serie A:** 70€ / squadra
-- **Serie B:** 50€ / squadra
+- Serie A — 70 €
+- Serie B — 50 €
+
+### Premi
 
 **SERIE A**
 
-- 1° classificato — 325€
-- 2° classificato — 140€
-- 3° classificato — 70€
+- 1° classificato — 325 €
+- 2° classificato — 140 €
+- 3° classificato — 70 €
 
 **SERIE B**
 
@@ -48,31 +51,41 @@ Quota di iscrizione
 - ... — -
 - 8° classificato — <span style="color:#dc3545;font-weight:bold">- 20 €</span>
 
-Al vincitore della coppa:
+**Champions league:** 🏆 50 € + eventuali multe (da formazioni non schierate)
 
-**🏆 50€**
+## Modalità Lega
 
-+ eventuali multe (derivanti da formazioni non schierate)
+Modalità: Mantra (ultima votazione 2025/2026)
 
-## 2. Regolamento Fantacalcio Mantra
+**Rev06:** Non modificabile per 3 anni
 
-### Impostazioni Lega
+## Svolgimento asta
 
-![Tipo lega, disponibilità calciatori e crediti iniziali](assets/images/settings-tipo-crediti.png)
+### Tipologia asta
 
-![Configurazione rosa e panchina](assets/images/settings-rosa-panchina.png)
+Asta classica a rialzo, minima chiamata 1 fM, rialzo minimo 1 fM
 
-![Numero e tipo sostituzioni](assets/images/settings-sostituzioni.jpeg)
+### Buste chiuse
 
-![Soglie gol](assets/images/settings-soglie-gol.png)
+**Rev06**
 
-![Tabella bonus/malus](assets/images/settings-bonus-malus.png)
+Ogni squadra può chiamare un solo giocatore in tutta l'asta (attaccanti esclusi, cioè nessun giocatore con ruolo rosso in caso di Mantra) tra quelli che deve chiamare lui chiedendo che l'asta sia fatta col metodo busta chiusa. Una volta chiamato il giocatore ogni squadra scriverà su un bigliettino il proprio nome e il prezzo che vuole offrire per quel giocatore. Allo scadere di un conteggio di 3 minuti il bigliettino sarà ripiegato e consegnato alla squadra alla sua sinistra (se presente un battitore d'asta saranno consegnati a lui i bigliettini). Una volta consegnati verranno lette le cifre sul bigliettino e quella più alta si aggiudica il giocatore.
 
-### Rinvii partite
+In caso di pari merito la procedura verrà ripetuta solo per quelle squadre che hanno scritto la cifra più alta a pari merito e che dovranno rioffrire una cifra obbligatoriamente maggiore a quella scritta precedentemente fino a che una delle squadre non avrà la meglio.
+
+Una squadra può rifiutarsi di partecipare ad un'asta a busta chiusa, ma solo se il rifiuto viene espresso all'inizio: dopo la prima offerta non è più possibile ritirarsi. Se una squadra scrive una cifra fuori dal suo budget disponibile la sua offerta è da considerarsi nulla.
+
+Se due squadre, contendendosi un giocatore, sono entrambe obbligate a partecipare a un'offerta successiva all'ultima finita in parità ma non possono aumentare la cifra precedente senza andare fuori budget, l'asta è da considerarsi annullata e si ricomincia a chiamare il giocatore da 1 con asta classica; la squadra che ha chiamato il giocatore in busta chiusa ha comunque esaurito il suo slot per la chiamata in busta chiusa.
+
+## Rinvii partite
+
+### Partite rinviate < 3.
 
 - **Partite rinviate < 3.** Regola standard della lega: se le partite rinviate vengono recuperate oltre l'inizio del turno successivo si procederà ad assegnare 6 politico.
 
   ![Nota su partite nel lasso di tempo tra un turno e il successivo](assets/images/rinvii-partite-nota.jpeg)
+
+### Partite rinviate ≥ 3.
 
 - **Partite rinviate ≥ 3.** Si aspetterà che vengano regolarmente disputate "congelando" i voti fino al recupero delle partite stesse e calcolando al termine dell'ultimo recupero.
 
@@ -105,11 +118,23 @@ Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio recuperando un nu
 
 Nella giornata successiva alla chiusura del mercato di riparazione verrà effettuato il calcolo delle quotazioni secondo il Metodo Osnaghi e inviato a tutti i partecipanti.
 
+## Impostazioni Lega
+
+![Tipo lega, disponibilità calciatori e crediti iniziali](assets/images/settings-tipo-crediti.png)
+
+![Configurazione rosa e panchina](assets/images/settings-rosa-panchina.png)
+
+![Numero e tipo sostituzioni](assets/images/settings-sostituzioni.jpeg)
+
+![Soglie gol](assets/images/settings-soglie-gol.png)
+
+![Tabella bonus/malus](assets/images/settings-bonus-malus.png)
+
 ## 5. Albo risultati
 
 ### Palmarès
 
-| Nome | Totale | Lega unica | A | B | Coppa |
+| Nome | Totale | Unico | A | B | Coppa |
 |------|:---:|:---:|:---:|:---:|:---:|
 | Pobbi | 4 | 2 | 1 |  | 1 |
 | Carlo | 3 | 3 |  |  |  |
