@@ -51,7 +51,7 @@ La coppa prevede partite tra tutte le squadre indipendentemente dall'appartenenz
 - ... — -
 - 8° classificato — <span style="color:#dc3545;font-weight:bold">- 20 €</span>
 
-**Champions league:** 🏆 50 € + eventuali multe (da formazioni non schierate)
+**Champions league:** 🏆 50 € + multe formazioni non schierate
 
 ## Modalità Lega
 
@@ -93,9 +93,9 @@ Se due squadre, contendendosi un giocatore, sono entrambe obbligate a partecipar
 
 Il regolamento prevede per la definizione della regola 2 fattori + 1 condizione:
 
-- **Fattore soglia.** Percentuale di "soglia" sulle formazioni non schierate → 20%
-- **Fattore multa.** Multa per ogni formazione non schierata → 5 €.
-- **Condizione anno +1.** Il versamento della multa è prerogativa dell'iscrizione al fantacalcio dell'anno successivo.
+- **Soglia.** Percentuale di "soglia" sulle formazioni non schierate → 20%
+- **Multa.** Multa per ogni formazione non schierata → 5 €.
+- **Vincolo anno +1.** Il versamento della multa è prerogativa dell'iscrizione al fantacalcio dell'anno successivo.
 
 La soglia lavora come inibitore della penale → se e solo se viene superata la soglia si applicano le penali.
 
@@ -105,7 +105,7 @@ La multa verrà raccolta entro l'asta anno successivo → se non corrisposta imp
 
 ### Metodo Osnaghi
 
-Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio recuperando un numero di crediti calcolato applicando al valore di acquisto la medesima variazione percentuale che intercorre tra la Quotazione Iniziale Mantra e la Quotazione Attuale Mantra al momento della chiusura del mercato di riparazione della Serie A. Se il calcolo restituisce un numero con la virgola esso viene arrotondato all'intero superiore (se il calcolo dà 2,7 il valore sarà 3, se il risultato è 8,1 sarà 9) per favorire l'immissione in circolazione di crediti per finanziare l'asta ed evitare casistiche in cui il calcolo possa restituire il valore 0.
+Il Metodo Osnaghi consiste nel liberare il giocatore a gennaio recuperando un numero di crediti calcolato applicando al valore di acquisto la medesima variazione percentuale tra la Quotazione Iniziale Mantra e la Quotazione Attuale Mantra al momento della chiusura del mercato invernale. Se il calcolo restituisce un numero con la virgola esso viene arrotondato all'intero superiore (se il calcolo dà 2,7 il valore sarà 3, se il risultato è 8,1 sarà 9) per favorire l'immissione in circolazione di crediti per finanziare l'asta ed evitare casistiche in cui il calcolo possa restituire il valore 0.
 
 ### Razionale
 
