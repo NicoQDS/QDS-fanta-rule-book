@@ -26,7 +26,7 @@
   --site-color-footer: #212529;      /* bottom footer background */
   --site-color-albo-title-card: #FFA733; /* "Albo risultati" title card background, on index.html */
   --site-color-link: #0d6efd;        /* color of clickable text links inside paragraphs */
-  --site-color-navbar-links: #FFA733; /* text color of the links inside the navbar menu (#navbar-menu-links) */
+  --site-color-navbar-links: white; /* text color of the links inside the navbar menu (#navbar-menu-links) */
   --site-color-navbar-brand: #FFA733; /* text color of the site title link in the navbar (#navbar-brand-link) */
 
   /* Text styling for the site title link in the navbar
@@ -73,6 +73,25 @@
   background-color: var(--site-color-footer) !important;
 }
 
+#navbar-toggler-button {
+  /* Bootstrap's default navbar-dark toggler icon draws its three lines
+     at 55% white opacity. This overrides that one Bootstrap CSS
+     variable (scoped to this button) so the lines render fully white,
+     matching the rest of the navbar's icon/text color. */
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+  /* Bootstrap's default navbar-dark toggler border is a faint
+     rgba(255,255,255,.1). Override to plain white so it matches the
+     ".btn-outline-light" border on the trophy button right next to it. */
+  --bs-navbar-toggler-border-color: white;
+}
+
+.text-orange {
+  /* Reuses the site's brand orange (same as the "Albo risultati" title
+     card background) for small highlighted bits of text. */
+  color: var(--site-color-albo-title-card);
+}
+
 #albo-risultati-title-card {
   /* Bootstrap's own card has no background utility applied here, so a
      plain override (no "!important" needed) is enough. */
@@ -94,6 +113,92 @@
   color: var(--site-albo-title-text-color);
   font-size: var(--site-albo-title-font-size);
   font-weight: var(--site-albo-title-font-weight);
+}
+
+/* "Regolamento" title card, on ruleset.htm — same look as the "Albo
+   risultati" title card above, reusing the same variables. */
+#ruleset-title {
+  /* Overrides the "mb-5" utility class on this section (3rem). */
+  margin-bottom: 12px !important;
+}
+
+#ruleset-title-card {
+  background-color: var(--site-color-albo-title-card);
+}
+
+#ruleset-title-card-body {
+  padding-top: var(--site-albo-title-card-body-padding-y);
+  padding-bottom: var(--site-albo-title-card-body-padding-y);
+  padding-left: var(--site-albo-title-card-body-padding-x);
+  padding-right: var(--site-albo-title-card-body-padding-x);
+}
+
+#ruleset-title-text {
+  color: var(--site-albo-title-text-color);
+  font-size: var(--site-albo-title-font-size);
+  font-weight: var(--site-albo-title-font-weight);
+}
+
+#revision-history {
+  /* Overrides the "mb-5" utility class on this section (3rem). */
+  margin-bottom: 12px !important;
+}
+
+#revision-history-card-header {
+  background-color: var(--site-color-navbar);
+  color: white;
+}
+
+/* Shared header style for every top-level rulebook section card
+   (Formula a girone doppio, Regolamento Fantacalcio Mantra, etc.) —
+   same navbar background / white text as #revision-history-card-header. */
+.rulebook-card-header {
+  background-color: var(--site-color-navbar);
+  color: white;
+}
+
+/* Every card header's text at 14px, overriding the Bootstrap "h2"
+   sizing on the title inside it. */
+#revision-history-card-header,
+#revision-history-card-header .btn,
+.rulebook-card-header,
+.rulebook-card-header h2 {
+  font-size: 14px;
+}
+
+.girone-subsection-heading {
+  /* Shared style for the "Serie A e Serie B" and "Champions league"
+     subsection headings inside #girone-doppio. */
+  font-size: 14px;
+}
+
+#formazioni-non-schierate-link-button {
+  /* Border and icon (SVG uses "fill: currentColor") both match the
+     navbar background instead of Bootstrap's default "outline-primary"
+     blue. */
+  border-color: var(--site-color-navbar);
+  color: var(--site-color-navbar);
+}
+
+#revision-history-card-header #revision-history-toggle-button {
+  /* ".btn-link" sets its own color (Bootstrap's link blue) instead of
+     inheriting from the header, so it needs an explicit override. */
+  color: white;
+}
+
+/* Swap the caret icon based on the toggle button's own "aria-expanded"
+   attribute, which Bootstrap's collapse JS keeps in sync automatically
+   — no custom JS needed here. */
+#revision-history-toggle-icon-open {
+  display: none;
+}
+
+#revision-history-toggle-button[aria-expanded="true"] #revision-history-toggle-icon-closed {
+  display: none;
+}
+
+#revision-history-toggle-button[aria-expanded="true"] #revision-history-toggle-icon-open {
+  display: inline-block;
 }
 
 .card-label {
@@ -287,6 +392,39 @@ html {
   border-left: 4px solid #cd7f32;
 }
 
+/* Same gold/silver/bronze left border, on ruleset.htm's Serie A prize
+   list (#serie-a-prizes-list, 3 items: 1st/2nd/3rd classificato). */
+#serie-a-prizes-list .list-group-item:nth-child(1) {
+  border-left: 4px solid #ffd700;
+}
+
+#serie-a-prizes-list .list-group-item:nth-child(2) {
+  border-left: 4px solid #c0c0c0;
+}
+
+#serie-a-prizes-list .list-group-item:nth-child(3) {
+  border-left: 4px solid #cd7f32;
+}
+
+/* Same idea on ruleset.htm's Serie B prize list (#serie-b-prizes-list,
+   8 items): gold/silver/bronze for 1st-3rd, red for the 8th (relegation
+   penalty), matching #albo-risultati's relegation-zone red border. */
+#serie-b-prizes-list .list-group-item:nth-child(1) {
+  border-left: 4px solid #ffd700;
+}
+
+#serie-b-prizes-list .list-group-item:nth-child(2) {
+  border-left: 4px solid #c0c0c0;
+}
+
+#serie-b-prizes-list .list-group-item:nth-child(3) {
+  border-left: 4px solid #cd7f32;
+}
+
+#serie-b-prizes-list .list-group-item:last-child {
+  border-left: 4px solid #dc3545;
+}
+
 /* Relegation zone: bottom 3 of Serie A, bottom 1 of Serie B. Matched
    by id suffix ("-serie-a-table" / "-serie-b-table") since that's
    what tells the two columns apart — there's no dedicated class. */
@@ -326,6 +464,32 @@ html {
 
 #albo-risultati [id$="-champions-league"] .winner-group-name,
 #albo-risultati [id$="-coppa-lega-unica"] .winner-group-name {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Same "winner-group" pill, unscoped so it also works outside
+   #albo-risultati (e.g. the champions league prize on ruleset.htm). */
+.winner-group {
+  display: flex;
+  align-items: stretch;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-left: 4px solid #ffd700;
+  border-radius: var(--bs-border-radius);
+  overflow: hidden;
+}
+
+.winner-group-icon {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-right: var(--bs-border-width) solid var(--bs-border-color);
+  color: var(--site-color-navbar);
+}
+
+.winner-group-name {
   display: flex;
   align-items: center;
   flex: 1;

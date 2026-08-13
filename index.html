@@ -2,25 +2,26 @@
 <!--
   index.html — "Albo risultati" page
   =======================================================================
-  This site is split across THREE separate HTML pages that all share
-  the same navbar and footer (copy-pasted into each file, since this
-  is a plain static site with no templating system):
+  This site is split across TWO separate HTML pages that both share
+  the same footer, and a similar but intentionally different navbar
+  (copy-pasted into each file, since this is a plain static site with
+  no templating system):
 
-    - index.html    → "Albo risultati" (THIS page, also the site's
-                       home page): Palmarès summary table and one
-                       card per past season
-    - ruleset.htm   → "Regolamento": girone doppio, impostazioni
-                       Mantra, rinvii partite, formazioni non
-                       schierate, Metodo Osnaghi
-    - revision.html → "Storico revisioni"
+    - index.html   → "Albo risultati" (THIS page, also the site's
+                      home page): Palmarès summary table and one
+                      card per past season
+    - ruleset.htm  → "Regolamento": storico revisioni (collapsed by
+                      default, at the top), girone doppio,
+                      impostazioni Mantra, rinvii partite, formazioni
+                      non schierate, Metodo Osnaghi
 
   Styling comes from the Bootstrap CSS framework (loaded from a CDN
   link below, so there is nothing to install). Bootstrap is free and
   open source (MIT license): https://getbootstrap.com
 
   Any small custom styling on top of Bootstrap lives in style.css
-  (shared by all three pages). The only JavaScript (in script.js,
-  also shared) is explained there — Bootstrap's own bundled JS already
+  (shared by both pages). The only JavaScript (in script.js, also
+  shared) is explained there — Bootstrap's own bundled JS already
   handles the mobile navigation menu, so we barely need any custom
   code any more.
 
@@ -62,14 +63,14 @@
        menu collapsed behind the hamburger button at EVERY screen
        width, desktop included — which is what we want everywhere.
 
-       This exact block (navbar) is copy-pasted identically at the top
-       of index.html, ruleset.htm and revision.html, so the site
-       navigation looks and behaves the same on all three pages. The
-       first five links point to sections WITHIN ruleset.htm
-       ("ruleset.htm#girone-doppio" etc.) so they work correctly no
-       matter which of the three pages you are currently on; the last
-       two links point to index.html (this page) and revision.html
-       directly.
+       Unlike the rest of the site, the navbar is intentionally
+       DIFFERENT on each page: this page (index.html) only has the
+       site title and a book-icon button ("navbar-ruleset-button")
+       that opens ruleset.htm — there is no hamburger toggler or menu
+       here. ruleset.htm's navbar instead has a trophy-icon button
+       that opens index.html plus the hamburger menu with links to
+       every section of ruleset.htm (see that file for the full
+       explanation of its navbar).
        =================================================================== -->
     <nav id="main-navbar" class="navbar navbar-dark bg-primary fixed-top">
       <div id="navbar-container" class="container-fluid">
@@ -96,64 +97,6 @@
             />
           </svg>
         </a>
-
-        <div id="navbar-menu" class="collapse navbar-collapse">
-          <ul id="navbar-menu-links" class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a
-                id="nav-link-girone-doppio"
-                class="nav-link"
-                href="ruleset.htm#girone-doppio"
-                >Girone doppio</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="nav-link-mantra-settings"
-                class="nav-link"
-                href="ruleset.htm#mantra-settings"
-                >Impostazioni Mantra</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="nav-link-rinvii-partite"
-                class="nav-link"
-                href="ruleset.htm#rinvii-partite"
-                >Rinvii partite</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="nav-link-formazioni-non-schierate"
-                class="nav-link"
-                href="ruleset.htm#formazioni-non-schierate"
-                >Formazioni non schierate</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="nav-link-metodo-osnaghi"
-                class="nav-link"
-                href="ruleset.htm#metodo-osnaghi"
-                >Metodo Osnaghi</a
-              >
-            </li>
-            <li class="nav-item">
-              <a id="nav-link-albo-risultati" class="nav-link" href="index.html"
-                >Albo risultati</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                id="nav-link-revision-history"
-                class="nav-link"
-                href="revision.html"
-                >Storico revisioni</a
-              >
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
 

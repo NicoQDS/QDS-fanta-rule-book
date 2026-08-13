@@ -2,77 +2,57 @@
 
 **Rev05 — 02/09/2025**
 
-## 1. Formula a girone doppio
+## Storico revisioni
 
-L'adozione di questo sistema prevede due gironi da otto squadre (Serie A e Serie B).
+| Rev | Data | Descrizione |
+|-----|------|-------------|
+| 00 | 08/06/2023 | <ul><li>Prima emissione regolamento</li></ul> |
+| 01 | 04/07/2023 | <ul><li>Adozione Serie A e Serie B già dall'anno zero.</li><li>Eliminata suddivisione casuale dei gironi nell'anno zero.</li><li>Modificata quota iscrizione Serie A (50€→70€).</li><li>Modificati i premi assegnati al girone di Serie A (in toto) e Serie B (relativamente alla penale dell'ultimo posto).</li></ul> |
+| 02 | 07/10/2024 | <ul><li>Aggiunta la regola su rinvio giornate al regolamento.</li><li>Aggiornato albo risultati.</li></ul> |
+| 03 | 29/11/2024 | <ul><li>Aggiunta regola formazioni non schierate</li></ul> |
+| 04 | 31/07/2025 | <ul><li>Fantacalcio Mantra – Nuovo Regolamento e impostazioni</li></ul> |
+| 05 | 02/09/2025 | Cambiamenti a seguito delle votazioni in data 29/08: <ul><li>Crediti Iniziali da 300 a 500;</li><li>Malus Rigore Sbagliato da -3 a -2;</li><li>Bonus Rigore Segnato da +3 a +2;</li><li>Introduzione Metodo Osnaghi per calcolo valore dei giocatori per l'asta di riparazione;</li><li>Soglie Gol da 4 invece che da 5.</li></ul> |
 
-### Suddivisione anno zero
+## Struttura gironi e Champions league
 
-I due gironi di Serie A e Serie B dell'anno ZERO saranno così composti:
+### Struttura gironi
 
-**SERIE A**
-
-| # | Squadra |
-|---|---------|
-| 1 | Anto & Impe |
-| 2 | Pobbi & Tia |
-| 3 | Tommy |
-| 4 | Charlie |
-| 5 | Ste Mora, Fefe & Ale Lissi |
-| 6 | Mino & Giolla |
-| 7 | Vinci |
-| 8 | Carlo |
-
-**SERIE B**
-
-| # | Squadra |
-|---|---------|
-| 1 | Nico |
-| 2 | Cri |
-| 3 | Gio |
-| 4 | Trilly |
-| 5 | Bruno |
-| 6 | Zecca |
-| 7 | Rouge |
-| 8 | Manu |
-
-### Premi, promozione/retrocessione
-
-La quota di iscrizione è di 70 €/squadra per la Serie A e 50 €/squadra per la Serie B.
-
-**SERIE A**
-
-| Classifica | Premio |
-|------------|--------|
-| 1° classificato | 325€ |
-| 2° classificato | 140€ |
-| 3° classificato | 70€ |
-| 4° classificato | - |
-| 5° classificato | - |
-| 6° classificato | Retrocessione |
-| 7° classificato | Retrocessione |
-| 8° classificato | Retrocessione |
-
-**SERIE B**
-
-| Classifica | Premio |
-|------------|--------|
-| 1° classificato | 225 € + 20 € / Prom. |
-| 2° classificato | 100 € / Prom. |
-| 3° classificato | 50 € / Prom. |
-| 4° classificato | - |
-| 5° classificato | - |
-| 6° classificato | - |
-| 7° classificato | - |
-| 8° classificato | -20€ |
+Due gironi da otto squadre, Serie A e Serie B.<br>
+**Retrocessione:** Ultime tre posizione Serie A<br>
+**Promozione:** Prime tre posizione Serie B
 
 ### Coppa
-
-Il vincitore della coppa prende 50€ + eventuali multe (vedi [Regolamento formazioni non schierate](#3-regolamento-formazioni-non-schierate)).
 
 La calendarizzazione della coppa verrà effettuata in fase di creazione dei gironi.
 
 La coppa prevede partite tra tutte le squadre indipendentemente dall'appartenenza alla Serie A o Serie B.
+
+## Distribuzione quote vincitori
+
+Quota di iscrizione
+
+- **Serie A:** 70€ / squadra
+- **Serie B:** 50€ / squadra
+
+**SERIE A**
+
+- 1° classificato — 325€
+- 2° classificato — 140€
+- 3° classificato — 70€
+
+**SERIE B**
+
+- 1° classificato — 225 € + <span style="color:#198754;font-weight:bold">20 €</span>
+- 2° classificato — 100 €
+- 3° classificato — 50 €
+- ... — -
+- 8° classificato — <span style="color:#dc3545;font-weight:bold">- 20 €</span>
+
+Al vincitore della coppa:
+
+**🏆 50€**
+
++ eventuali multe (derivanti da formazioni non schierate)
 
 ## 2. Regolamento Fantacalcio Mantra
 
@@ -363,14 +343,3 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 1° | Nico, Gio |
 | 2° | Carlo, Cri |
 | 3° | Confa, Teo Colo |
-
-## Storico revisioni
-
-| Rev | Data | Descrizione |
-|-----|------|-------------|
-| Rev00 | 08/06/2023 | Prima emissione regolamento |
-| Rev01 | 04/07/2023 | Adozione Serie A e Serie B già dall'anno zero.<br>Eliminata suddivisione casuale dei gironi nell'anno zero.<br>Modificata quota iscrizione Serie A (50€→70€).<br>Modificati i premi assegnati al girone di Serie A (in toto) e Serie B (relativamente alla penale dell'ultimo posto). |
-| Rev02 | 07/10/2024 | Aggiunta la regola su rinvio giornate al regolamento.<br>Aggiornato albo risultati. |
-| Rev03 | 29/11/2024 | Aggiunta regola formazioni non schierate |
-| Rev04 | 31/07/2025 | Fantacalcio Mantra – Nuovo Regolamento e impostazioni |
-| Rev05 | 02/09/2025 | Cambiamenti a seguito delle votazioni in data 29/08:<br>Crediti Iniziali da 300 a 500;<br>Malus Rigore Sbagliato da -3 a -2;<br>Bonus Rigore Segnato da +3 a +2;<br>Introduzione Metodo Osnaghi per calcolo valore dei giocatori per l'asta di riparazione;<br>Soglie Gol da 4 invece che da 5. |
