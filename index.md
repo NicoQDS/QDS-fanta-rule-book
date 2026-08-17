@@ -145,11 +145,11 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | Giolla | 3 | 2 | 1 |  |  |
 | Mino | 3 | 2 | 1 |  |  |
 | Zecca | 3 | 1 |  | 1 | 1 |
+| Gio | 3 | 1 |  | 1 | 1 |
 | Nico | 2 | 2 |  |  |  |
 | Tommy | 2 | 2 |  |  |  |
 | Vinci | 2 | 2 |  |  |  |
 | Charlie | 2 | 1 | 1 |  |  |
-| Gio | 2 | 1 |  | 1 |  |
 | Tia | 2 |  | 1 |  | 1 |
 | Fefe | 1 | 1 |  |  |  |
 | Impe | 1 | 1 |  |  |  |
@@ -257,7 +257,7 @@ Nella giornata successiva alla chiusura del mercato di riparazione verrà effett
 | 7° | Bruno |
 | 8° | Nico |
 
-**Champions league:** ?? 🏆
+**Champions league:** Gio 🏆
 
 ### 2022-2023 — 14° anno
 
